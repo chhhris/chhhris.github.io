@@ -1,6 +1,5 @@
 {% capture root_url %}{{ site.root | strip_slash }}{% endcapture %}
 {% include head.html %}
-<<<<<<< HEAD
 
 <body {% if page.body_id %} id="{{ page.body_id }}" {% endif %} {% if page.sidebar == false %} class="no-sidebar" {% endif %} {% if page.sidebar == 'collapse' or site.sidebar == 'collapse' %} class="collapse-sidebar sidebar-footer" {% endif %}>
 
@@ -15,16 +14,16 @@
             {% include_array default_asides %}
           {% endif %}
 
-         <!--  <section id="code">
+          <section id="code">
             <h2>Code</h2>
-              <p><a target="_blank" href="https://github.com/chhhris" target="_blank">GitHub</a></p>         
+              <p><a target="_blank" href="https://github.com/ryandeussing" target="_blank">GitHub</a></p>         
           </section>
 
           <section id="habit">
             <h2>Habit</h2>
               <p><a target="_blank" href="http://joesgoals.com">Daily goals</a></p>
               <a target="_blank" href="http://joesgoals.com"><div id="goals"></div></a>  
-          </section> -->
+          </section>
 
 
         </aside>    
@@ -60,17 +59,3 @@
 
 
 	</div> <!-- container -->
-=======
-<body {% if page.body_id %} id="{{ page.body_id }}" {% endif %} {% if page.sidebar == false %} class="no-sidebar" {% endif %} {% if page.sidebar == 'collapse' or site.sidebar == 'collapse' %} class="collapse-sidebar sidebar-footer" {% endif %}>
-  <header role="banner">{% include header.html %}</header>
-  <nav role="navigation">{% include navigation.html %}</nav>
-  <div id="main">
-    <div id="content">
-      {{ content | expand_urls: root_url }}
-    </div>
-  </div>
-  <footer role="contentinfo">{% include footer.html %}</footer>
-  {% include after_footer.html %}
-</body>
-</html>
->>>>>>> Update

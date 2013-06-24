@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 p a {
   border: none;
 }
@@ -14,12 +13,6 @@ p a {
       margin-bottom: 2px;
       border: none;
     }
-=======
-#pinboard_linkroll {
-  .pin-title, .pin-description {
-    display: block;
-    margin-bottom: .5em;
->>>>>>> Update
   }
   .pin-tag {
     @include hover-link;
@@ -28,7 +21,4 @@ p a {
     &:last-child:after { content: ''; }
   }
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> Update

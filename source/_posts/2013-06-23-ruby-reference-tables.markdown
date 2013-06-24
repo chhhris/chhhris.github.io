@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ""Ruby reference tables""
+title: Ruby reference tables"
 date: 2013-06-23 22:26
 comments: true
 categories: 
