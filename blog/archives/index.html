@@ -9,12 +9,14 @@
   <meta name="description" content="sneakers.">
 
   
-    <title>Learning and making and sharing - chhhris lake</title>
+    <title>Blog Archive - chhhris lake</title>
   
 
 
   
-  <meta name="description" content="A blog about culture, technology, and interesting things.">
+  <meta name="description" content="Blog archive 2013 Jun 16 2013
+&nbsp; Functional Programming and Ruby Jun 11 2013
+&nbsp; A simple expanation of how the NSA program PRISM works &hellip;">
   
 
 
@@ -25,7 +27,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://chhhris.github.io">
+  <link rel="canonical" href="http://chhhris.github.io/blog/archives">
   <link href="/favicon.ico" rel="icon">
   <script type="text/javascript" src="http://use.typekit.com/zcp2xbp.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>  
@@ -46,10 +48,10 @@
 
 <body   >
 
-	<div class="container">
+  <div class="container">
 
-		<div class="four columns">
-  			<nav role="navigation"><ul class="title">
+    <div class="four columns">
+        <nav role="navigation"><ul class="title">
   <li><a href="/">Christopher Lake</a></li>
 </ul>
   
@@ -101,37 +103,35 @@
 
           
 
-         <!--  <section id="code">
+          <section id="code">
             <h2>Code</h2>
-              <p><a target="_blank" href="https://github.com/chhhris" target="_blank">GitHub</a></p>         
+              <p><a target="_blank" href="https://github.com/ryandeussing" target="_blank">GitHub</a></p>         
           </section>
 
           <section id="habit">
             <h2>Habit</h2>
               <p><a target="_blank" href="http://joesgoals.com">Daily goals</a></p>
               <a target="_blank" href="http://joesgoals.com"><div id="goals"></div></a>  
-          </section> -->
-
+          </section>
 
         </aside>    
-  	</div>
-    
-    
+    </div>
 
-    <header class="twelve columns" role="banner">
-    
-<hgroup>
-  <h1>sneakers.</h1>
-</hgroup>
+    <div id="main" class="twelve columns">
+      <div id="content">
+        <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Blog archive</h1>
+  </header>
+  
+  <div id="blog-archives">
 
-    </header>
 
-    
 
-  	<div id="main" class="twelve columns">
-	    <div id="content">
-	      <div id="blog-archives">
-
+  
+  <h2>2013</h2>
 
 <article>
   
@@ -143,6 +143,7 @@
 
 
 </article>
+
 
 
 <article>
@@ -157,8 +158,20 @@
 </article>
 
 </div>
-	    </div>
-  	</div>
+
+</article>
+
+</div>
+
+<script>
+  jQuery.noConflict()('li.other').hover (
+    function () {
+    jQuery.noConflict()(this).toggleClass("current-menu-item")
+  });
+</script>
+
+      </div>
+    </div>
   
   <footer role="contentinfo"  class="sixteen columns"><center>
 <p class="credit">
@@ -191,9 +204,9 @@
 
 
 <script>
-  jQuery.noConflict()('li.other').hover (
+  $('li.other').hover (
     function () {
-    jQuery.noConflict()(this).toggleClass("current-menu-item")
+    $(this).toggleClass("current-menu-item")
   });
 </script>
 
@@ -201,4 +214,4 @@
 </html>
 
 
-	</div> <!-- container -->
+  </div> <!-- container -->
