@@ -6,7 +6,11 @@ comments: true
 categories: 
 ---
 
+<<<<<<< HEAD
 # > Functional Ruby
+=======
+# Functional Ruby
+>>>>>>> Update
 
 Functional Programming ("FP") wasn't on my radar until I started hacking at The Flatiron School two weeks ago (and by _hacking_ I mean as in a _hacking cough_ :). 
 
@@ -16,6 +20,7 @@ And here it is:
 
 <script async class="speakerdeck-embed" data-id="f6c17b106e0a0130b5df22000a1e9b3c" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
 
+<<<<<<< HEAD
 ## Say, what is functional programming anyway?
 
 + Higher order functions, bro.
@@ -52,4 +57,24 @@ And here it is:
 
 
 
+=======
+You probably read the deck, but if you didn't, here are a few takeaways from it. 
+
+### Amaaazing :-D !
+
++ 
++ 
++ 
+
+### But I'm still confused :-/ ?
+
++ 
++ 
++ 
+
+
+One of the coolest factoids is a screenshot of an old-school email from Matz to another developer explaining that Ruby might best be thought of MatzLisp.
+
+[id]: http://24.media.tumblr.com/6723cfa607a806c3bd52664edc56a83f/tumblr_moicu2vmgC1qd3p27o1_1280.png  "Screenshot of email from Matz explaining how he invented Ruby"
+>>>>>>> Update
 

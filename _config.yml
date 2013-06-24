@@ -2,10 +2,17 @@
 #      Main Configs       #
 # ----------------------- #
 
+<<<<<<< HEAD
 url: http://chhhris.github.io
 title: sneakers.
 subtitle: innovating subtitle here.
 author: chhhris lake
+=======
+url: http://chhhris.githu.io
+title: @chhhris
+subtitle: I'm thinking about gold in Munich.
+author: Chris Lake
+>>>>>>> Update
 simple_search: http://google.com/search
 description:
 
