@@ -9,12 +9,12 @@
   <meta name="description" content="sneakers.">
 
   
-    <title>Infographic on deploying to production - chhhris lake</title>
+    <title>Sinatra is having a moment - chhhris lake</title>
   
 
 
   
-  <meta name="description" content="Infographic: From Development to Production We had an awesome guest lecture from Spike Grobstein today on deploying from development to a live, &hellip;">
+  <meta name="description" content="Sinatra is having a moment. Frank Sinatra is balling out, but the ancient crooner has no idea why. Seriously, though. What is it about Sinatra? &hellip;">
   
 
 
@@ -25,7 +25,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://chhhris.github.io/blog/2013/06/26/infographic-on-deploying-to-production">
+  <link rel="canonical" href="http://chhhris.github.io/blog/2013/06/19/sinatra-is-having-a-moment">
   <link href="/favicon.ico" rel="icon">
   <script type="text/javascript" src="http://use.typekit.com/zcp2xbp.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>  
@@ -168,7 +168,7 @@
   
   <header>
     
-      <h1 class="entry-title">Infographic on Deploying to Production</h1>
+      <h1 class="entry-title">Sinatra Is Having a Moment</h1>
     
     
       <p class="meta">
@@ -181,7 +181,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://chhhris.github.io/blog/2013/06/26/infographic-on-deploying-to-production/" data-via="chhhris" data-counturl="http://chhhris.github.io/blog/2013/06/26/infographic-on-deploying-to-production/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://chhhris.github.io/blog/2013/06/19/sinatra-is-having-a-moment/" data-via="chhhris" data-counturl="http://chhhris.github.io/blog/2013/06/19/sinatra-is-having-a-moment/" >Tweet</a>
   
   
   
@@ -190,25 +190,116 @@
     
 
 
-<div class="entry-content"><h1>Infographic: From Development to Production</h1>
+<div class="entry-content"><h1>Sinatra is having a moment.</h1>
 
-<p>We had an awesome guest lecture from Spike Grobstein today on deploying from development to a live, production server on Digital Ocean.</p>
+<h2>Frank Sinatra is balling out, but the ancient crooner has no idea why.</h2>
 
-<p><a href="https://github.com/spikegrobstein">Spike</a> was kind enough to provide <a href="https://github.com/spikegrobstein/flatironschool-deployment_lecture">written instructions</a> that were both thorough and crystal clear.</p>
+<br>
 
-<p>After a long few weeks of boot camp I decided to give my left brain a rest, let my right brain go to town, and memorialize Spike&rsquo;s lecture in this infographic.</p>
 
-<p><img src="https://docs.google.com/drawings/d/1jznvVteZB1tx1hOCZ8G09Y6ESaoQKt139sZmsKnKXnA/pub?w=1126&amp;h=1246" alt="Infographic" /></p>
+<p>Seriously, though. What is it about Sinatra?</p>
 
-<p><caption><Insert witty comment about a picture being worth 1,000 words></caption></p>
+<ul>
+<li><p>Sinatra is small and flexible. If you&rsquo;re not trying to build Basecamp who needs all the overhead!?</p></li>
+<li><p>Doesn&rsquo;t follow the MVC pattern (MVC is <em>so</em> late 20th century).</p></li>
+<li><p>Who&rsquo;s on it? Oh, I don&rsquo;t know… Apple, LinkedIn, Heroku, GitHub, the (<em>entire!?</em>) British Government, the list goes on. (via <a href="http://en.wikipedia.org/wiki/Sinatra_(software">Wikipedia</a>).)</p></li>
+<li><p>Sinatra is a featherweight at a svelte &lt;2,000 lines of code vs. the heavyweight champion Rails at ~100,000 lines of code.</p></li>
+<li><p><a href="http://david.heinemeierhansson.com/">DHH</a> &lsquo;04 vs. <a href="https://github.com/bmizerany">Blake Mizerany</a> &#8216;07.</p></li>
+</ul>
+
+
+<br><br>
+
+
+<hr />
+
+<p><img src="http://24.media.tumblr.com/92c85e0a3d2a8d5ce1d33106ad6d9088/tumblr_movo37Klas1qd3p27o1_500.png" alt="Sinatra official imagery" /></p>
+
+<hr />
+
+<blockquote><p>Sinatra is great for the micro-style, Rails is not. As long as you stay micro, Sinatra will beat Rails. If you go beyond micro, Rails will beat Sinatra.</p></blockquote>
+
+<br/><br/>
+
+
+<blockquote><p>If your app has 5-10 end points, there’s a real benefit to just rolling your own with Sinatra. Essentially if your entire controller structure can fit in a page or two of code, running it in a single file is great.</p></blockquote>
+
+<br/><br/>
+
+
+<blockquote><p>A large part of Rails’ success is by giving people a curated selection of the best technologies (“best” defined by me and the Rails community). I change Rails every week to better fit what I’d want the perfect framework to be.</p>
+
+<blockquote><p>DHH on Sinatra vs. Rails (via <a href="http://rubysource.com/rails-or-sinatra-the-best-of-both-worlds/">RubySource</a>)</p></blockquote></blockquote>
+
+<hr />
+
+<h1>Below is a bunch of crap that I plan to revisit when I myself have a moment.</h1>
+
+<p>First thing&rsquo;s first, let&rsquo;s examine how Sinatra apps are packed.</p>
+
+<h2>Example i. <a href="https://github.com/rtomayko/tilt/tree/tilt-1">Tilt</a></h2>
+
+<br>
+
+
+<p>What is Tilt? Tilt is a thin interface over a bunch of different Ruby template engines in an attempt to make their usage as generic possible.</p>
+
+<p>This is useful for web frameworks, static site generators, and other systems that support multiple template engines but don&rsquo;t want to code for each of them individually.</p>
+
+<p><strong> Packing structure </strong></p>
+
+<p>  /bin/ tilt
+  /docs/ TEMPLATES.md
+  /docs/ common.css</p>
+
+<p>  /lib/tilt/ #template implementation files in .rb e.g. nokogiri.rb, less.rb, haml.rb, coffee.rb
+  /lib/tilt/ tilt.rb # module w. classes and mapping implementations</p>
+
+<p>  /test/ #testing files in .rb e.g. tilt_lesstemplate_test.less, test_helper.rb, tilt_cache_test.rb, et al.
+  /test</p>
+
+<p>  autotest
+  .gitignore
+  .travis.yml
+  CHANGELOG.md
+  .COPYING
+  Gemfile
+  HACKING
+  README.md
+  Rakefile
+  tilt.gemspec</p>
+
+<hr />
+
+<h2>Example ii. <a href="https://github.com/sstephenson/brochure">Brochure</a></h2>
+
+<p>What is Brochure? Brochure is a Rack application for serving static sites with ERB templates (or any of the many template languages supported by Tilt).</p>
+
+<p>It&rsquo;s the good parts of PHP wrapped up in a little Ruby package — perfect for serving the marketing site for your Rails app.</p>
+
+<p><strong>Folder Structure</strong></p>
+
+<p>  lib/
+  test/
+  .gitignore
+  Gemfile
+  LICENSE
+  README.md
+  Rakefile
+  brochure.gemspec
+  config.ru.example</p>
+
+<h2>Pithy wrap-up goes here.</h2>
 </div>
 
 
   <footer>
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/06/23/ruby-reference-tables/" title="Previous Post: Ruby reference tables">&laquo; Previous post</a>
+        <a class="basic-alignment left" href="/blog/2013/06/16/functional-programming-and-ruby/" title="Previous Post: Functional Programming and Ruby">&laquo; Previous post</a>
       
+      
+        <a class="basic-alignment right" href="/blog/2013/06/23/ruby-reference-tables/" title="next Post: Ruby reference tables">Next post &raquo;</a>
       
     </p>
   </footer>
