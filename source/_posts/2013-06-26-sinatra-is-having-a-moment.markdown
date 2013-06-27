@@ -22,8 +22,8 @@ Seriously, though. What is it about Sinatra?
 
 * Sinatra is a featherweight at a svelte <2,000 lines of code vs. the heavyweight champion Rails at ~100,000 lines of code. 
 
-* [DHH](http://david.heinemeierhansson.com/) '04 vs. [Blake Mizerany](https://github.com/bmizerany) '07.
-<br><br>
+* Inventor hoedown: in the rails corner, [DHH](http://david.heinemeierhansson.com/) '04 vs. Sinatra maven [Blake Mizerany](https://github.com/bmizerany) '07.
+<br>
 ---
 ![Sinatra official imagery](http://24.media.tumblr.com/92c85e0a3d2a8d5ce1d33106ad6d9088/tumblr_movo37Klas1qd3p27o1_500.png)
 
