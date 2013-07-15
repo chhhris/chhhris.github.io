@@ -109,7 +109,11 @@ Below is a screenshot of pending pull requests for the ruby-lang.org website. Yo
 
 `</end>`
 
+### Postscript:
 
+A couple hours after I submitted the pull request I heard back from a couple team members..
+
+![RubyMeetup](/images/ruby-lang-response.png)
 
 
 
