@@ -1,16 +1,13 @@
 ---
 layout: post
 title: "Open Source: How to Git Started"
-date: 2013-07-14 23:22
+date: 2013-07-15 23:22
 comments: true
 categories: 
 ---
 
 
-# Open Source is Super Easy
-### `<h2>`
-### Contributing to Open Source projects is EZ ;)
-### `</h2>`
+# Look, Contributing to Open Source is Super EZ
 
 
 There are loads of ways to contribute to your favorite open source projects. I list out a bunch of them below. 
