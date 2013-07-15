@@ -6,9 +6,7 @@ comments: true
 categories: 
 ---
 
-
 # Look, Contributing to Open Source is Super EZ
-
 
 There are loads of ways to contribute to your favorite open source projects. I list out a bunch of them below. 
 
