@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pop Your Open Source Cherry: How to Git Started"
+title: "Open Source: How to Git Started"
 date: 2013-07-14 23:22
 comments: true
 categories: 
@@ -9,7 +9,7 @@ categories:
 
 # Open Source is Super Easy
 ### `<h2>`
-### Contributing to Open Source projects is way easier than getting laid ;)
+### Contributing to Open Source projects is EZ ;)
 ### `</h2>`
 
 
