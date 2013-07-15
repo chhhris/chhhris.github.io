@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="chhhris lake">
+  <meta name="description" content="sneakers.">
+
+  
+    <title>Pop Your Open Source Cherry: How to Git Started - chhhris lake</title>
+  
+
+
+  
+  <meta name="description" content="Open Source is Super Easy &lt;h2&gt; Contributing to Open Source projects is way easier than getting laid ;) &lt;/h2&gt; There are loads of ways to &hellip;">
+  
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://chhhris.github.io/blog/2013/07/14/pop-your-open-source-cherry-how-to-git-started">
+  <link href="/favicon.ico" rel="icon">
+  <script type="text/javascript" src="http://use.typekit.com/zcp2xbp.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>  
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="sneakers." type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+
+<body   >
+
+	<div class="container">
+
+		<div class="four columns">
+  			<nav role="navigation"><ul class="title">
+  <li><a href="/">Ryan Deussing</a></li>
+</ul>
+  
+<ul class="main-navigation">
+
+  <li class="other"><a href="/">Blog</a></li>
+  <li class="other"><a href="/blog/categories/persons-of-interest">Persons of Interest</a></li>
+  <li class="other"><a href="/projects">Projects</a></li>
+
+
+  <li class="other"><a target="_blank" href="http://linkedin.com/in/ryandeussing">About</a></li>
+</ul>
+
+
+<ul class="subscription" data-subscription="rss">
+  <li class="other"><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:chhhris.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+
+
+
+</nav>
+        <aside class="sidebar">
+          
+            <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/14/pop-your-open-source-cherry-how-to-git-started/">Pop Your Open Source Cherry: How to Git Started</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/26/infographic-on-deploying-to-production/">Infographic on deploying to production</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/ruby-reference-tables/">Ruby reference tables</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/19/sinatra-is-having-a-moment/">Sinatra is having a moment</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/16/functional-programming-and-ruby/">Functional Programming and Ruby</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Github Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/chhhris">@chhhris</a> on Github
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'chhhris',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+          
+
+          <section id="code">
+            <h2>Code</h2>
+              <p><a target="_blank" href="https://github.com/ryandeussing" target="_blank">GitHub</a></p>         
+          </section>
+
+          <section id="habit">
+            <h2>Habit</h2>
+              <p><a target="_blank" href="http://joesgoals.com">Daily goals</a></p>
+              <a target="_blank" href="http://joesgoals.com"><div id="goals"></div></a>  
+          </section>
+
+
+        </aside>    
+  	</div>
+    
+    
+
+  	<div id="main" class="twelve columns">
+	    <div id="content">
+	      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Pop Your Open Source Cherry: How to Git Started</h1>
+    
+    
+      <p class="meta">
+        
+      </p>
+    
+  </header>
+
+
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://chhhris.github.io/blog/2013/07/14/pop-your-open-source-cherry-how-to-git-started/" data-via="chhhris" data-counturl="http://chhhris.github.io/blog/2013/07/14/pop-your-open-source-cherry-how-to-git-started/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+
+
+<div class="entry-content"><h1>Open Source is Super Easy</h1>
+
+<h3><code>&lt;h2&gt;</code></h3>
+
+<h3>Contributing to Open Source projects is way easier than getting laid ;)</h3>
+
+<h3><code>&lt;/h2&gt;</code></h3>
+
+<p>There are loads of ways to contribute to your favorite open source projects. I list out a bunch of them below.</p>
+
+<p>I&rsquo;ll also discuss how I ate my own dog food, mostly because I love using that expression. Altho I was actually pretty excited to submit my first open source pull request.</p>
+
+<hr />
+
+<h2>Gitting started.</h2>
+
+<p>Working on any open source project on GitHub is just as easy as working on your own team projects. If you know how to use GitHub, you know how to contribute to open source.</p>
+
+<p>Take Ruby, for example. To paraphrase the rubyist <a href="http://www.mikeperham.com/2010/12/08/contributing-to-ruby/">Mike Perham</a> (who you probs don&rsquo;t read but definitely should), Ruby Core has made contributing as simple as:</p>
+
+<ol>
+<li><strong>Fork the Ruby repo</strong> &ndash; <a href="http://github.com/ruby/ruby">http://github.com/ruby/ruby</a></li>
+<li><strong>Commit changes to your repo</strong> &mdash; e.g. <a href="https://github.com/chhhris/ruby">https://github.com/chhhris/ruby</a></li>
+<li><strong>Submit a pull request</strong> &ndash; GitHub has a great primer at <a href="https://help.github.com/articles/using-pull-requests">https://help.github.com/articles/using-pull-requests</a></li>
+</ol>
+
+
+<hr />
+
+<h2>Ways to contribute.</h2>
+
+<p>I think it&rsquo;s fairly common knowledge that you don&rsquo;t have to be a prodigy to contribute to meaningful open source projects. And that&rsquo;s especially true because there are so many ways to contribute.</p>
+
+<p>I&rsquo;ve adapted <a href="http://blog.smartbear.com/programming/14-ways-to-contribute-to-open-source-without-being-a-programming-genius-or-a-rock-star/">Andy Lester&rsquo;s post</a> on Smart Bear to list some easy, helpful ways to get involved with Ruby.</p>
+
+<h3>Stay informed</h3>
+
+<ul>
+<li><strong>Join a mailing list</strong> &ndash;</li>
+</ul>
+
+
+<p>Ruby Weekly produces a very informative and engaging weekly newsletter &ndash; sign up at <a href="http://rubyweekly.com/">http://rubyweekly.com/</a>.
+<img src="/images/ruby-weekly.png" alt="RubyMeetup" />
+The official mailing lists are maintained here &ndash; <a href="http://www.ruby-lang.org/en/community/mailing-lists/">http://www.ruby-lang.org/en/community/mailing-lists/</a></p>
+
+<ul>
+<li><strong>Join a user group</strong> &ndash;</li>
+</ul>
+
+
+<p>Ruby has a dedicated <a href="http://ruby.meetup.com">Meetup.com page</a>.
+<img src="/images/ruby_meetup_com.png" alt="RubyMeetup" /></p>
+
+<ul>
+<li><strong>Follow dedicated blogs</strong> &ndash;</li>
+</ul>
+
+
+<p>There are several active, dedicated Ruby blogs. Ruby Source is a particularly good one &ndash; <a href="http://rubysource.com/">http://rubysource.com/</a>
+<img src="/images/ruby-source-blog.png" alt="RubyMeetup" /></p>
+
+<ul>
+<li><strong>Join an IRC channel</strong> &ndash;</li>
+</ul>
+
+
+<p>IRC is confusing at first glance so I&rsquo;ll have to spend some more time looking into it.
+<img src="/images/irc-ruby.png" alt="RubyMeetup" /></p>
+
+<h3>Review open tickets</h3>
+
+<ul>
+<li><strong>Troubleshoot and add detail to open bugs</strong> &ndash;</li>
+<li><strong>Close old bugs that have been fixed</strong> &ndash;</li>
+</ul>
+
+
+<p>You&rsquo;ll need an account in order to review, edit and submit bug reports: <a href="https://bugs.ruby-lang.org/projects/ruby/wiki/HowtoReport">https://bugs.ruby-lang.org/projects/ruby/wiki/HowtoReport</a>
+<img src="/images/bug-tracking.png" alt="RubyMeetup" /></p>
+
+<h3>Code</h3>
+
+<ul>
+<li><strong>Test a beta or release candidate</strong></li>
+<li><strong>Fix a bug</strong></li>
+<li><strong>Write a test</strong></li>
+</ul>
+
+
+<h3>Contribute to the community</h3>
+
+<ul>
+<li><strong>Improve Documentation</strong></li>
+<li><strong>Answer a question</strong></li>
+<li><strong>Improve the project website</strong></li>
+</ul>
+
+
+<hr />
+
+<h2>Let&rsquo;s do it.</h2>
+
+<p>This last idea &ndash; improving the project website &ndash; is where I ended up getting my foot in the door. I was perusing Ruby&rsquo;s official website and found a couple links to resources on del.icio.us that had, well, gone stale.</p>
+
+<p>My first step was to locate the source code for Ruby&rsquo;s official website. After a few minutes scouring the main Ruby repo in vain, I discovered that the project website is, logically, maintained on a separate repo: <a href="https://github.com/ruby/www.ruby-lang.org/">https://github.com/ruby/www.ruby-lang.org/</a>.</p>
+
+<p><img src="/images/ruby-lang-github.png" alt="RubyMeetup" /></p>
+
+<p>Before making any edits, I went to the project&rsquo;s Readme file for any instructions. First thing was a link to a Wiki page entitled <a href="https://github.com/ruby/www.ruby-lang.org/wiki">&ldquo;Guidelines for Contributors.&rdquo;</a></p>
+
+<p>The guidelines were very clear and straightforward. Basically, the Ruby-Lang site is built on Jekyll and they suggest most edits/contributions/etc be made as edits directly on the GitHub hosted page (as opposed to cloning the repo, making changes locally, and pushing back to the remote).</p>
+
+<p><img src="/images/ruby-lang_community-weblogs_github-edit.png" alt="RubyMeetup" /></p>
+
+<p>The project owners had specific instructions for how you should describe your work when submitting the pull request. Bottom line, they ask you to be crystal clear about 1) what page you&rsquo;re working on, and 2) which language version (as the site is maintained in many languages around the world).</p>
+
+<p>The body text is optional.</p>
+
+<p><img src="/images/ruby-lang_github-submitting-pull-request.png" alt="RubyMeetup" /></p>
+
+<p>And that&rsquo;s it! Even though it was such a minor contribution on a relatively obscure page, the main objective for me was to de-mystify and better understand the logistics for submitting to an open source project. And I&rsquo;m so glad I did, because it&rsquo;s a lot simpler than I imagined!</p>
+
+<p>Below is a screenshot of pending pull requests for the ruby-lang.org website. You can see yours truly at the top of the list ;)</p>
+
+<p><img src="/images/ruby-lang_github-pull-requests.png" alt="RubyMeetup" /></p>
+
+<p><code>&lt;/end&gt;</code></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/06/26/infographic-on-deploying-to-production/" title="Previous Post: Infographic on deploying to production">&laquo; Previous post</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+	    </div>
+  	</div>
+  
+  <footer role="contentinfo"  class="sixteen columns"><center>
+<p class="credit">
+  <span class="credit">Powered by <a href="http://github.com">GitHub</a>, <a href="https://github.com/imathis/octopress">Octopress</a>, &amp; <a href="https://github.com/dhgamache/Skeleton">Skeleton</a></span>.
+</p>
+</center>
+</footer>
+  
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+<script>
+  jQuery.noConflict()('li.other').hover (
+    function () {
+    jQuery.noConflict()(this).toggleClass("current-menu-item")
+  });
+</script>
+
+</body>
+</html>
+
+
+	</div> <!-- container -->
