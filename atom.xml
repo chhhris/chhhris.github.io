@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[sneakers.]]></title>
+  <link href="http://chhhris.github.io/atom.xml" rel="self"/>
+  <link href="http://chhhris.github.io/"/>
+  <updated>2013-08-08T14:48:47-04:00</updated>
+  <id>http://chhhris.github.io/</id>
+  <author>
+    <name><![CDATA[chhhris lake]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The difference between procs, blocks and lambdas]]></title>
+    <link href="http://chhhris.github.io/blog/2013/08/06/the-difference-between-procs/"/>
+    <updated>2013-08-06T11:07:00-04:00</updated>
+    <id>http://chhhris.github.io/blog/2013/08/06/the-difference-between-procs</id>
+    <content type="html"><![CDATA[<h1>Procs, blocks and lambdas: Closure in Ruby</h1>
+
+<p>Closures allow declarative programming languages &ndash; that do not normally maintain state &ndash; to persist data. Note, closures are found in JavaScript, Ruby, and many/several (?) other languages.</p>
+
+<p>Closures appear in Ruby in the form of Procs, blocks and lambdas. All three share the same core feature, which is that they let you take blocks (loops and iterations) and save them as a function. This function can then be passed as an argument to other methods and functions.</p>
+
+<hr />
+
+<p>Examples of blocks include … [ collect? map? #=> not sure]</p>
+
+<p>Procs are a class. They can be created in 3 ways. Proc.new also as an argument (proc {|n| n.operation }) and ONE OTHER WAY.</p>
+
+<p>Lamdbas are like prods only they are saved as a method. They can be created the same as #2 above e.g. (lambda {|n| n.operation })</p>
+
+<hr />
+
+<p>Procs and lambdas behave differently upon being returned. As soon as procs are returned, they will escape the function.</p>
+
+<ul>
+<li> So if you have a nested loop but call return in the inner loop, as soon as the proc hits the function is escaped and that value is returned, so any additional return values in the outer loop will not be called.</li>
+</ul>
+
+
+<p>Whereas a lambda will let the function continue after the return value, until the whole function has been run.</p>
+
+<p>Possible downside with lambdas is that they can leak memory. This happens when local variables, which would normally be garbage collected by Ruby&rsquo;s native gc, are instead persisted by their [ association ?? ] with the lambda.</p>
+
+<h2>Resources for further reading:</h2>
+
+<ol>
+<li>Skorks (two posts &mdash; on closures and procs / lambdas)</li>
+<li>Rubyist thing</li>
+<li>JavaScript 101 is garbaggio #=> find something better.</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Open Source: How to Git Started]]></title>
+    <link href="http://chhhris.github.io/blog/2013/07/15/open-source-how-to-git-started/"/>
+    <updated>2013-07-15T23:22:00-04:00</updated>
+    <id>http://chhhris.github.io/blog/2013/07/15/open-source-how-to-git-started</id>
+    <content type="html"><![CDATA[<h1>Look, Contributing to Open Source is Super EZ</h1>
+
+<p>There are loads of ways to contribute to your favorite open source projects. I list out a bunch of them below.</p>
+
+<p>I&rsquo;ll also discuss how I ate my own dog food, mostly because I love using that expression. Altho I was actually pretty excited to submit my first open source pull request.</p>
+
+<hr />
+
+<h2>Gitting started.</h2>
+
+<p>Working on any open source project on GitHub is just as easy as working on your own team projects. If you know how to use GitHub, you know how to contribute to open source.</p>
+
+<p>Take Ruby, for example. To paraphrase the rubyist <a href="http://www.mikeperham.com/2010/12/08/contributing-to-ruby/">Mike Perham</a> (who you probs don&rsquo;t read but definitely should), Ruby Core has made contributing as simple as:</p>
+
+<ol>
+<li><strong>Fork the Ruby repo</strong> &ndash; <a href="http://github.com/ruby/ruby">http://github.com/ruby/ruby</a></li>
+<li><strong>Commit changes to your repo</strong> &mdash; e.g. <a href="https://github.com/chhhris/ruby">https://github.com/chhhris/ruby</a></li>
+<li><strong>Submit a pull request</strong> &ndash; GitHub has a great primer at <a href="https://help.github.com/articles/using-pull-requests">https://help.github.com/articles/using-pull-requests</a></li>
+</ol>
+
+
+<hr />
+
+<h2>Ways to contribute.</h2>
+
+<p>I think it&rsquo;s fairly common knowledge that you don&rsquo;t have to be a prodigy to contribute to meaningful open source projects. And that&rsquo;s especially true because there are so many ways to contribute.</p>
+
+<p>I&rsquo;ve adapted <a href="http://blog.smartbear.com/programming/14-ways-to-contribute-to-open-source-without-being-a-programming-genius-or-a-rock-star/">Andy Lester&rsquo;s post</a> on Smart Bear to list some easy, helpful ways to get involved with Ruby.</p>
+
+<h3>Stay informed</h3>
+
+<ul>
+<li><strong>Join a mailing list</strong> &ndash;</li>
+</ul>
+
+
+<p>Ruby Weekly produces a very informative and engaging weekly newsletter &ndash; sign up at <a href="http://rubyweekly.com/">http://rubyweekly.com/</a>.
+<img src="http://chhhris.github.io/images/ruby-weekly.png" alt="RubyMeetup" />
+The official mailing lists are maintained here &ndash; <a href="http://www.ruby-lang.org/en/community/mailing-lists/">http://www.ruby-lang.org/en/community/mailing-lists/</a></p>
+
+<ul>
+<li><strong>Join a user group</strong> &ndash;</li>
+</ul>
+
+
+<p>Ruby has a dedicated <a href="http://ruby.meetup.com">Meetup.com page</a>.
+<img src="http://chhhris.github.io/images/ruby_meetup_com.png" alt="RubyMeetup" /></p>
+
+<ul>
+<li><strong>Follow dedicated blogs</strong> &ndash;</li>
+</ul>
+
+
+<p>There are several active, dedicated Ruby blogs. Ruby Source is a particularly good one &ndash; <a href="http://rubysource.com/">http://rubysource.com/</a>
+<img src="http://chhhris.github.io/images/ruby-source-blog.png" alt="RubyMeetup" /></p>
+
+<ul>
+<li><strong>Join an IRC channel</strong> &ndash;</li>
+</ul>
+
+
+<p>IRC is confusing at first glance so I&rsquo;ll have to spend some more time looking into it.
+<img src="http://chhhris.github.io/images/irc-ruby.png" alt="RubyMeetup" /></p>
+
+<h3>Review open tickets</h3>
+
+<ul>
+<li><strong>Troubleshoot and add detail to open bugs</strong> &ndash;</li>
+<li><strong>Close old bugs that have been fixed</strong> &ndash;</li>
+</ul>
+
+
+<p>You&rsquo;ll need an account in order to review, edit and submit bug reports: <a href="https://bugs.ruby-lang.org/projects/ruby/wiki/HowtoReport">https://bugs.ruby-lang.org/projects/ruby/wiki/HowtoReport</a>
+<img src="http://chhhris.github.io/images/bug-tracking.png" alt="RubyMeetup" /></p>
+
+<h3>Code</h3>
+
+<ul>
+<li><strong>Test a beta or release candidate</strong></li>
+<li><strong>Fix a bug</strong></li>
+<li><strong>Write a test</strong></li>
+</ul>
+
+
+<h3>Contribute to the community</h3>
+
+<ul>
+<li><strong>Improve Documentation</strong></li>
+<li><strong>Answer a question</strong></li>
+<li><strong>Improve the project website</strong></li>
+</ul>
+
+
+<hr />
+
+<h2>Let&rsquo;s do it.</h2>
+
+<p>This last idea &ndash; improving the project website &ndash; is where I ended up getting my foot in the door. I was perusing Ruby&rsquo;s official website and found a couple links to resources on del.icio.us that had, well, gone stale.</p>
+
+<p>My first step was to locate the source code for Ruby&rsquo;s official website. After a few minutes scouring the main Ruby repo in vain, I discovered that the project website is, logically, maintained on a separate repo: <a href="https://github.com/ruby/www.ruby-lang.org/">https://github.com/ruby/www.ruby-lang.org/</a>.</p>
+
+<p><img src="http://chhhris.github.io/images/ruby-lang-github.png" alt="RubyMeetup" /></p>
+
+<p>Before making any edits, I went to the project&rsquo;s Readme file for any instructions. First thing was a link to a Wiki page entitled <a href="https://github.com/ruby/www.ruby-lang.org/wiki">&ldquo;Guidelines for Contributors.&rdquo;</a></p>
+
+<p>The guidelines were very clear and straightforward. Basically, the Ruby-Lang site is built on Jekyll and they suggest most edits/contributions/etc be made as edits directly on the GitHub hosted page (as opposed to cloning the repo, making changes locally, and pushing back to the remote).</p>
+
+<p><img src="http://chhhris.github.io/images/ruby-lang_community-weblogs_github-edit.png" alt="RubyMeetup" /></p>
+
+<p>The project owners had specific instructions for how you should describe your work when submitting the pull request. Bottom line, they ask you to be crystal clear about 1) what page you&rsquo;re working on, and 2) which language version (as the site is maintained in many languages around the world).</p>
+
+<p>The body text is optional.</p>
+
+<p><img src="http://chhhris.github.io/images/ruby-lang_github-submitting-pull-request.png" alt="RubyMeetup" /></p>
+
+<p>And that&rsquo;s it! Even though it was such a minor contribution on a relatively obscure page, the main objective for me was to de-mystify and better understand the logistics for submitting to an open source project. And I&rsquo;m so glad I did, because it&rsquo;s a lot simpler than I imagined!</p>
+
+<p>Below is a screenshot of pending pull requests for the ruby-lang.org website. You can see yours truly at the top of the list ;)</p>
+
+<p><img src="http://chhhris.github.io/images/ruby-lang_github-pull-requests.png" alt="RubyMeetup" /></p>
+
+<p><code>&lt;/end&gt;</code></p>
+
+<h3>Postscript:</h3>
+
+<p>A couple hours after I submitted the pull request I heard back from a couple team members..</p>
+
+<p><img src="http://chhhris.github.io/images/ruby-lang-response.png" alt="RubyMeetup" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Infographic on deploying to production]]></title>
+    <link href="http://chhhris.github.io/blog/2013/06/26/infographic-on-deploying-to-production/"/>
+    <updated>2013-06-26T02:14:00-04:00</updated>
+    <id>http://chhhris.github.io/blog/2013/06/26/infographic-on-deploying-to-production</id>
+    <content type="html"><![CDATA[<h1>Infographic: From Development to Production</h1>
+
+<p>We had an awesome guest lecture from Spike Grobstein today on deploying from development to a live, production server on Digital Ocean.</p>
+
+<p><a href="https://github.com/spikegrobstein">Spike</a> was kind enough to provide <a href="https://github.com/spikegrobstein/flatironschool-deployment_lecture">written instructions</a> that were both thorough and crystal clear.</p>
+
+<p>After a long few weeks of boot camp I decided to give my left brain a rest, let my right brain go to town, and memorialize Spike&rsquo;s lecture in this infographic.</p>
+
+<p><img src="https://docs.google.com/drawings/d/1jznvVteZB1tx1hOCZ8G09Y6ESaoQKt139sZmsKnKXnA/pub?w=1126&amp;h=1246" alt="Infographic" /></p>
+
+<p><caption><Insert witty comment about a picture being worth 1,000 words></caption></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby reference tables]]></title>
+    <link href="http://chhhris.github.io/blog/2013/06/23/ruby-reference-tables/"/>
+    <updated>2013-06-23T22:26:00-04:00</updated>
+    <id>http://chhhris.github.io/blog/2013/06/23/ruby-reference-tables</id>
+    <content type="html"><![CDATA[<h1>Couple of tables worth referencing.</h1>
+
+<h2>(At least until I know it like the back of my hand.)</h2>
+
+<br>
+
+
+<p><img src="http://25.media.tumblr.com/a788a18471166e51d64c44f74f306f8d/tumblr_mou7l2DP9U1qd3p27o1_r1_500.png" alt="Example variable, class and constant names." /></p>
+
+<p><img src="http://24.media.tumblr.com/58379b85f5f1acc0e863c850f086eebe/tumblr_mom5z0360W1qd3p27o1_500.png" alt="Figure 2 - How arrays are indexed." /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sinatra is having a moment]]></title>
+    <link href="http://chhhris.github.io/blog/2013/06/19/sinatra-is-having-a-moment/"/>
+    <updated>2013-06-19T21:52:00-04:00</updated>
+    <id>http://chhhris.github.io/blog/2013/06/19/sinatra-is-having-a-moment</id>
+    <content type="html"><![CDATA[<h1>Sinatra is having a moment.</h1>
+
+<h2>Frank Sinatra is balling out, but the ancient crooner has no idea why.</h2>
+
+<br>
+
+
+<p>Seriously, though. What is it about Sinatra?</p>
+
+<ul>
+<li><p>Sinatra is small and flexible. If you&rsquo;re not trying to build Basecamp who needs all the overhead!?</p></li>
+<li><p>Doesn&rsquo;t follow the MVC pattern (MVC is <em>so</em> late 20th century).</p></li>
+<li><p>Who&rsquo;s on it? Oh, I don&rsquo;t know… Apple, LinkedIn, Heroku, GitHub, the (<em>entire!?</em>) British Government, the list goes on. (via <a href="http://en.wikipedia.org/wiki/Sinatra_(software">Wikipedia</a>).)</p></li>
+<li><p>Sinatra is a featherweight at a svelte &lt;2,000 lines of code vs. the heavyweight champion Rails at ~100,000 lines of code.</p></li>
+<li><p>Inventor hoedown: in the rails corner, <a href="http://david.heinemeierhansson.com/">DHH</a> &lsquo;04 vs. Sinatra maven <a href="https://github.com/bmizerany">Blake Mizerany</a> &#8216;07.</p></li>
+</ul>
+
+
+<br>
+
+
+<hr />
+
+<p><img src="http://24.media.tumblr.com/92c85e0a3d2a8d5ce1d33106ad6d9088/tumblr_movo37Klas1qd3p27o1_500.png" alt="Sinatra official imagery" /></p>
+
+<hr />
+
+<blockquote><p>Sinatra is great for the micro-style, Rails is not. As long as you stay micro, Sinatra will beat Rails. If you go beyond micro, Rails will beat Sinatra.</p></blockquote>
+
+<br/><br/>
+
+
+<blockquote><p>If your app has 5-10 end points, there’s a real benefit to just rolling your own with Sinatra. Essentially if your entire controller structure can fit in a page or two of code, running it in a single file is great.</p></blockquote>
+
+<br/><br/>
+
+
+<blockquote><p>A large part of Rails’ success is by giving people a curated selection of the best technologies (“best” defined by me and the Rails community). I change Rails every week to better fit what I’d want the perfect framework to be.</p>
+
+<blockquote><p>DHH on Sinatra vs. Rails (via <a href="http://rubysource.com/rails-or-sinatra-the-best-of-both-worlds/">RubySource</a>)</p></blockquote></blockquote>
+
+<hr />
+
+<h1>Below is a bunch of crap that I plan to revisit when I myself have a moment.</h1>
+
+<p>First thing&rsquo;s first, let&rsquo;s examine how Sinatra apps are packed.</p>
+
+<h2>Example i. <a href="https://github.com/rtomayko/tilt/tree/tilt-1">Tilt</a></h2>
+
+<br>
+
+
+<p>What is Tilt? Tilt is a thin interface over a bunch of different Ruby template engines in an attempt to make their usage as generic possible.</p>
+
+<p>This is useful for web frameworks, static site generators, and other systems that support multiple template engines but don&rsquo;t want to code for each of them individually.</p>
+
+<p><strong> Packing structure </strong></p>
+
+<p>  /bin/ tilt
+  /docs/ TEMPLATES.md
+  /docs/ common.css</p>
+
+<p>  /lib/tilt/ #template implementation files in .rb e.g. nokogiri.rb, less.rb, haml.rb, coffee.rb
+  /lib/tilt/ tilt.rb # module w. classes and mapping implementations</p>
+
+<p>  /test/ #testing files in .rb e.g. tilt_lesstemplate_test.less, test_helper.rb, tilt_cache_test.rb, et al.
+  /test</p>
+
+<p>  autotest
+  .gitignore
+  .travis.yml
+  CHANGELOG.md
+  .COPYING
+  Gemfile
+  HACKING
+  README.md
+  Rakefile
+  tilt.gemspec</p>
+
+<hr />
+
+<h2>Example ii. <a href="https://github.com/sstephenson/brochure">Brochure</a></h2>
+
+<p>What is Brochure? Brochure is a Rack application for serving static sites with ERB templates (or any of the many template languages supported by Tilt).</p>
+
+<p>It&rsquo;s the good parts of PHP wrapped up in a little Ruby package — perfect for serving the marketing site for your Rails app.</p>
+
+<p><strong>Folder Structure</strong></p>
+
+<p>  lib/
+  test/
+  .gitignore
+  Gemfile
+  LICENSE
+  README.md
+  Rakefile
+  brochure.gemspec
+  config.ru.example</p>
+
+<h2>Pithy wrap-up goes here.</h2>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Functional Programming and Ruby]]></title>
+    <link href="http://chhhris.github.io/blog/2013/06/16/functional-programming-and-ruby/"/>
+    <updated>2013-06-16T18:43:00-04:00</updated>
+    <id>http://chhhris.github.io/blog/2013/06/16/functional-programming-and-ruby</id>
+    <content type="html"><![CDATA[<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+
+<h1>> Functional Ruby</h1>
+
+<p>=======</p>
+
+<h1>Functional Ruby</h1>
+
+<blockquote><blockquote><blockquote><blockquote><blockquote><blockquote><blockquote><p>Update</p></blockquote></blockquote></blockquote></blockquote></blockquote></blockquote></blockquote>
+
+<p>Functional Programming (&ldquo;FP&rdquo;) wasn&rsquo;t on my radar until I started hacking at The Flatiron School two weeks ago (and by <em>hacking</em> I mean as in a <em>hacking cough</em> :).</p>
+
+<p>Since my ego is super attracted to highbrow challenges and feeling intellectually superior, when I heard that FP was baller status because it&rsquo;s both exceedingly powerful and exceedingly difficult to master, my interest was piqued. When I saw this speakerdeck presentation from Pat Shaughnessy ((<a href="http://www.youtube.com/watch?v=Dd7FixvoKBw">&ldquo;Get yo ass down to O&#8217;Shag Hennessy!&rdquo; &ldquo;Who?&rdquo; &ldquo;O&#8217;Shag Hennessy!!&rdquo; &ldquo;Principal O&#8217;Shaughnessy???&rdquo;</a>)) analyzing Ruby&rsquo;s relationship to FP I was like, &ldquo;challah!&rdquo;</p>
+
+<p>And here it is:</p>
+
+<script async class="speakerdeck-embed" data-id="f6c17b106e0a0130b5df22000a1e9b3c" data-ratio="1.33333333333333" src="http://chhhris.github.io//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+
+<h2>Say, what is functional programming anyway?</h2>
+
+<ul>
+<li><p>Higher order functions, bro.</p></li>
+<li><p>LAZY evaluation (<a href="http://en.wikipedia.org/wiki/Lazy_evaluation">definition:</a> <em>Lazy evaluation delays the evaluation of an expression until its value is needed (non-strict evaluation) and which also avoids repeated evaluations. </em>)</p></li>
+<li><p>Memoization (<a href="http://en.wikipedia.org/wiki/Memoization">definition:</a> <em>Memoization is an optimization technique used primarily to speed up computer programs by having function calls avoid repeating the calculation of results for previously processed inputs.</em>)</p></li>
+</ul>
+
+
+<h3>An email from Matz! =></h3>
+
+<ul>
+<li><strong>Check out this screenshot of an old-school email from Matz.</strong></li>
+<li><strong>Why aren&rsquo;t we calling Ruby &ldquo;MatzLisp&rdquo;?!</strong></li>
+</ul>
+
+
+<p><img src="http://24.media.tumblr.com/6723cfa607a806c3bd52664edc56a83f/tumblr_moicu2vmgC1qd3p27o1_1280.png" alt="Screenshot of email from Matz explaining how he invented Ruby" /></p>
+
+<h2>Ruby, and in particular Ruby 2.0, has a lot of functional features. <em>However&hellip;</em></h2>
+
+<ul>
+<li><strong>Ruby and Haskell can resemble each other, but only on the surface.</strong></li>
+</ul>
+
+
+<p><img src="http://25.media.tumblr.com/86c92e5b13db2b2d04808348f504d3ad/tumblr_moijcsUUqR1qd3p27o1_1280.png" alt="Screenshot comparing Haskell and Ruby functions" /></p>
+
+<ul>
+<li><strong>Under the hood, Ruby&rsquo;s support of functional features is limited.</strong></li>
+</ul>
+
+
+<p><img src="http://25.media.tumblr.com/b5c202e103b09ab356a696973b339a2d/tumblr_moik72Ti7L1qd3p27o1_1280.png" alt="Slide comparing Ruby and Haskell code" /></p>
+
+<ul>
+<li><strong>Close, but no cigar!</strong></li>
+</ul>
+
+
+<p><img src="http://25.media.tumblr.com/8293e19ad17d09ddee1d5ea5f19dbda7/tumblr_moik72Ti7L1qd3p27o2_1280.png" alt="Next slide showing the Ruby code resulting in NoMethodError" /></p>
+
+<h2>In Conclusion</h2>
+
+<ul>
+<li><strong>Learning a truly functional programming language won&rsquo;t be trivial.</strong></li>
+</ul>
+
+
+<p>=======
+You probably read the deck, but if you didn&rsquo;t, here are a few takeaways from it.</p>
+
+<h3>Amaaazing :-D !</h3>
+
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+
+
+<h3>But I&rsquo;m still confused :&ndash;/ ?</h3>
+
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+
+
+<p>One of the coolest factoids is a screenshot of an old-school email from Matz to another developer explaining that Ruby might best be thought of MatzLisp.</p>
+
+<blockquote><blockquote><blockquote><blockquote><blockquote><blockquote><blockquote><p>Update</p></blockquote></blockquote></blockquote></blockquote></blockquote></blockquote></blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A simple expanation of how the NSA program PRISM works]]></title>
+    <link href="http://chhhris.github.io/blog/2013/06/11/how-the-nsa-program-prism-works/"/>
+    <updated>2013-06-11T08:44:00-04:00</updated>
+    <id>http://chhhris.github.io/blog/2013/06/11/how-the-nsa-program-prism-works</id>
+    <content type="html"><![CDATA[<h2>Or, how the author of the infamous top-secret PPT presentation has clearly never seen the inside of a SQL table.</h2>
+
+<p>When <a href="http://www.guardian.co.uk/world/2013/jun/07/prism-tech-giants-shock-nsa-data-mining">The Guardian</a> broke the story of the US Government&rsquo;s digital intelligence gathering operation (code named &ldquo;PRISM&rdquo;), the oft-quoted line from the Top Secret presentation an NSA analyst gave to his colleagues was that the NSA had &ldquo;direct access&rdquo; to the servers at Google, Microsoft, Facebook, Yahoo!, Apple, among others (with Dropbox &ldquo;coming soon&rdquo; and Twitter <a href="http://www.avc.com/a_vc/2013/06/feature-friday-standing-up-for-your-users.html">conspicuous by its absence</a>).</p>
+
+<p>The response from these tech companies was swift and <a href="http://www.guardian.co.uk/world/2013/jun/07/prism-tech-giants-shock-nsa-data-mining">unequivocal</a>. Turns out the NSA doesn&rsquo;t actually tap directly into the servers at these companies; instead, it has computers on-site to which NSA analysts post queries. The NSA computers then download the relevant data.</p>
+
+<p>The imprecision of the NSA&rsquo;s presentation is clearly, obviously due to the fact that the author has never performed a SQL JOIN on two tables in a database tables!</p>
+
+<p>In short, the way the PRISM works is the NSA collects as much data &ndash; every Google search, email, FB post and Verizon phone call &ndash; it can get its hands on. The NSA then cross-references this huge mountain of data with lists of known or suspected terrorists, persons of interest, et al. In other words, the NSA data analysts perform an <a href="http://www.codinghorror.com/blog/2007/10/a-visual-explanation-of-sql-joins.html">INNER JOIN</a> on the two tables!</p>
+
+<p>Here&rsquo;s a neat visualizing from <a href="http://blog.seldomatt.com/blog/2012/10/17/about-sql-joins-the-3-ring-binder-model/">Seldom Matt</a>:</p>
+
+<p><img src="http://25.media.tumblr.com/1702c57a6fd3a1048d1ab062d2cff590/tumblr_mo8cqssYw01qd3p27o1_500.png" alt="Image of &quot;binder method&quot; for visualizing and inner join" /></p>
+]]></content>
+  </entry>
+  
+</feed>

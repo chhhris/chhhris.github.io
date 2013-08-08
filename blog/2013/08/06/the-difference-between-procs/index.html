@@ -5,19 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  <title>The difference between procs, blocks and lambdas - sneakers.</title>
   <meta name="author" content="chhhris lake">
-  <meta name="description" content="sneakers.">
-
-  
-    <title>The difference between procs, blocks and lambdas - chhhris lake</title>
-  
-
 
   
   <meta name="description" content="Procs, blocks and lambdas: Closure in Ruby Closures allow declarative programming languages &ndash; that do not normally maintain state &ndash; to &hellip;">
   
-
-
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -25,169 +18,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://chhhris.github.io/blog/2013/08/06/the-difference-between-procs">
-  <link href="/favicon.ico" rel="icon">
-  <script type="text/javascript" src="http://use.typekit.com/zcp2xbp.js"></script>
-  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>  
+  <link rel="canonical" href="http://chhhris.github.io/blog/2013/08/06/the-difference-between-procs/">
+  <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="sneakers." type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic' rel='stylesheet' type='text/css'>
 
   
 
 </head>
 
-
 <body   >
+  <header role="banner"><hgroup>
+  <img src="/images/ah_frame_transparent.png" />
+  <h1><a href="/">sneakers.</a></h1>
+</hgroup>
 
-	<div class="container">
-
-		<div class="four columns">
-  			<nav role="navigation"><ul class="title">
-  <li><a href="/">Ryan Deussing</a></li>
-</ul>
-  
-<ul class="main-navigation">
-
-  <li class="other"><a href="/">Blog</a></li>
-  <li class="other"><a href="/blog/categories/persons-of-interest">Persons of Interest</a></li>
-  <li class="other"><a href="/projects">Projects</a></li>
-
-
-  <li class="other"><a target="_blank" href="http://linkedin.com/in/ryandeussing">About</a></li>
-</ul>
-
-
-<ul class="subscription" data-subscription="rss">
-  <li class="other"><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:chhhris.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-
-
-
-</nav>
-        <aside class="sidebar">
-          
-            <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2013/08/06/the-difference-between-procs/">The difference between procs, blocks and lambdas</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/15/open-source-how-to-git-started/">Open Source: How to Git Started</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/26/infographic-on-deploying-to-production/">Infographic on deploying to production</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/23/ruby-reference-tables/">Ruby reference tables</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/19/sinatra-is-having-a-moment/">Sinatra is having a moment</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>Github Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
-  </ul>
-  
-  <a href="https://github.com/chhhris">@chhhris</a> on Github
-  
-  <script type="text/javascript">
-    $.domReady(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'chhhris',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
-
-
-          
-
-          <section id="code">
-            <h2>Code</h2>
-              <p><a target="_blank" href="https://github.com/ryandeussing" target="_blank">GitHub</a></p>         
-          </section>
-
-          <section id="habit">
-            <h2>Habit</h2>
-              <p><a target="_blank" href="http://joesgoals.com">Daily goals</a></p>
-              <a target="_blank" href="http://joesgoals.com"><div id="goals"></div></a>  
-          </section>
-
-
-        </aside>    
-  	</div>
-    
-    
-
-  	<div id="main" class="twelve columns">
-	    <div id="content">
-	      <div>
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
 <article class="hentry" role="article">
   
   <header>
     
       <h1 class="entry-title">The Difference Between Procs, Blocks and Lambdas</h1>
     
-    
-      <p class="meta">
-        
-      </p>
-    
   </header>
 
 
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://chhhris.github.io/blog/2013/08/06/the-difference-between-procs/" data-via="chhhris" data-counturl="http://chhhris.github.io/blog/2013/08/06/the-difference-between-procs/" >Tweet</a>
-  
-  
-  
-</div>
 
-    
 
 
 <div class="entry-content"><h1>Procs, blocks and lambdas: Closure in Ruby</h1>
@@ -231,7 +96,37 @@
   <footer>
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/07/15/open-source-how-to-git-started/" title="Previous Post: Open Source: How to Git Started">&laquo; Previous post</a>
+  
+
+<span class="byline author vcard">Posted by <span class="fn">chhhris lake</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-06T11:07:00-04:00" pubdate data-updated="true">Aug 6<span>th</span>, 2013</time>
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://chhhris.github.io/blog/2013/08/06/the-difference-between-procs/" data-via="chhhris" data-counturl="http://chhhris.github.io/blog/2013/08/06/the-difference-between-procs/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/07/15/open-source-how-to-git-started/" title="Previous Post: Open Source: How to Git Started">&laquo; Open Source: How to Git Started</a>
       
       
     </p>
@@ -240,16 +135,80 @@
 
 </div>
 
-	    </div>
-  	</div>
+<aside class="sidebar">
   
-  <footer role="contentinfo"  class="sixteen columns"><center>
-<p class="credit">
-  <span class="credit">Powered by <a href="http://github.com">GitHub</a>, <a href="https://github.com/imathis/octopress">Octopress</a>, &amp; <a href="https://github.com/dhgamache/Skeleton">Skeleton</a></span>.
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/06/the-difference-between-procs/">The difference between procs, blocks and lambdas</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/15/open-source-how-to-git-started/">Open Source: How to Git Started</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/26/infographic-on-deploying-to-production/">Infographic on deploying to production</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/ruby-reference-tables/">Ruby reference tables</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/19/sinatra-is-having-a-moment/">Sinatra is having a moment</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/chhhris">@chhhris</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'chhhris',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - chhhris lake -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
-</center>
+
 </footer>
-  
   
 
 
@@ -271,17 +230,9 @@
 
 
 
-
-
-<script>
-  jQuery.noConflict()('li.other').hover (
-    function () {
-    jQuery.noConflict()(this).toggleClass("current-menu-item")
-  });
-</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/javascripts/aharris.js"></script>
 
 </body>
 </html>
-
-
-	</div> <!-- container -->
