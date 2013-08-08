@@ -1,18 +1,7 @@
-p a {
-  border: none;
-}
-
 #pinboard_linkroll {
   .pin-title, .pin-description {
     display: block;
-  }
-  .pin-item p {
-    font-size: 13px;
-    line-height: 16px;
-    a {
-      margin-bottom: 2px;
-      border: none;
-    }
+    margin-bottom: .5em;
   }
   .pin-tag {
     @include hover-link;
@@ -21,4 +10,3 @@ p a {
     &:last-child:after { content: ''; }
   }
 }
-
