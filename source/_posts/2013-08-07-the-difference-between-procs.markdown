@@ -8,9 +8,7 @@ categories:
 
 # What are Procs and lambdas: Closure in Ruby
 
-First:
-
-What is a closure? *(Somehow my English degree didn't teach me this :)*
+First: What is a closure? *(Somehow my English degree didn't teach me this :)*
 
 Closures allow declarative programming languages - specifically, languages that do not normally maintain *state* - to persist data. 
 
@@ -22,9 +20,7 @@ They are found in [many popular languages](http://stackoverflow.com/questions/14
 * C# and 
 * Objective-C.
 
-In Ruby, every `Proc` object is a closure, which means that each code block you write captures references to data from its surrounding scope for later use. [(Source)](https://practicingruby.com/articles/shared/mvzhovpjbghr)
-
-The core properties of closures, and by extension Ruby procs and lambdas, are:
+In Ruby, every `Proc` object is a closure, which means that each code block you write captures references to data from its surrounding scope for later use. [(Source)](https://practicingruby.com/articles/shared/mvzhovpjbghr). The core properties of closures, and by extension Ruby procs and lambdas, are:
 
 1. You can pass `Procs` and lambdas around like objects (to be called later).
 
