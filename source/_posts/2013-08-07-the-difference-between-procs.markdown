@@ -33,20 +33,22 @@ Let's dive into some code to examine scope vis a vis procs and lambdas:
 		  	lambda { p defined?(y) }.call
 		end
 		
+		proc_can_see_outer_scope_locals #=> "local-variable"
+		
 		def proc_can_modify_outer_scope_locals
 		  y = 10
 		  lambda { y = 20 }.call
 		  p y
 		end
 		
+		proc_can_modify_outer_scope_locals #=> 20
+		
 		def proc_destroys_block_local_vars_on_exit
 		  lambda { y = 10 }.call
 		  p defined?(y)
 		end
 		
-		proc_can_see_outer_scope_locals         #=> "local-variable"
-		proc_can_modify_outer_scope_locals      #=> 20
-		proc_destroys_block_local_vars_on_exit  #=> nil
+		proc_destroys_block_local_vars_on_exit #=> nil
 		
 		# Code snippet courtesy of the Practicing Rubyist.
  
