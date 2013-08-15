@@ -9,7 +9,7 @@
   <meta name="author" content="chhhris lake">
 
   
-  <meta name="description" content="Procs, blocks and lambdas: Closure in Ruby Closures allow declarative programming languages &ndash; that do not normally maintain state &ndash; to &hellip;">
+  <meta name="description" content="What are Procs and lambdas: Closure in Ruby First: What is a closure? (Somehow my English degree didn&rsquo;t teach me this :) Closures allow &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -55,38 +55,124 @@
 
 
 
-<div class="entry-content"><h1>Procs, blocks and lambdas: Closure in Ruby</h1>
+<div class="entry-content"><h1>What are Procs and lambdas: Closure in Ruby</h1>
 
-<p>Closures allow declarative programming languages &ndash; that do not normally maintain state &ndash; to persist data. Note, closures are found in JavaScript, Ruby, and many/several (?) other languages.</p>
+<p>First:</p>
 
-<p>Closures appear in Ruby in the form of Procs, blocks and lambdas. All three share the same core feature, which is that they let you take blocks (loops and iterations) and save them as a function. This function can then be passed as an argument to other methods and functions.</p>
+<p>What is a closure? <em>(Somehow my English degree didn&rsquo;t teach me this :)</em></p>
 
-<hr />
+<p>Closures allow declarative programming languages &ndash; specifically, languages that do not normally maintain <em>state</em> &ndash; to persist data.</p>
 
-<p>Examples of blocks include … [ collect? map? #=> not sure]</p>
-
-<p>Procs are a class. They can be created in 3 ways. Proc.new also as an argument (proc {|n| n.operation }) and ONE OTHER WAY.</p>
-
-<p>Lamdbas are like prods only they are saved as a method. They can be created the same as #2 above e.g. (lambda {|n| n.operation })</p>
-
-<hr />
-
-<p>Procs and lambdas behave differently upon being returned. As soon as procs are returned, they will escape the function.</p>
+<p>They are found in <a href="http://stackoverflow.com/questions/1423002/how-different-programming-languages-use-closures">many popular languages</a> including</p>
 
 <ul>
-<li> So if you have a nested loop but call return in the inner loop, as soon as the proc hits the function is escaped and that value is returned, so any additional return values in the outer loop will not be called.</li>
+<li>JavaScript</li>
+<li>Ruby</li>
+<li>Python</li>
+<li>C# and</li>
+<li>Objective-C.</li>
 </ul>
 
 
+<p>In Ruby, every <code>Proc</code> object is a closure, which means that each code block you write captures references to data from its surrounding scope for later use. <a href="https://practicingruby.com/articles/shared/mvzhovpjbghr">(Source)</a></p>
+
+<p>The core properties of closures, and by extension Ruby procs and lambdas, are:</p>
+
+<ol>
+<li><p>You can pass <code>Procs</code> and lambdas around like objects (to be called later).</p></li>
+<li><p><code>Procs</code> and lambdas remember the values of all the variables that were in scope when the function was created. <code>Procs</code> and lambdas are then able to access those variables when they&rsquo;re called even if those variables are no longer be in scope.</p></li>
+</ol>
+
+
+<p>Let&rsquo;s dive into some code to examine scope vis a vis procs and lambdas:</p>
+
+<pre><code>    def proc_can_see_outer_scope_locals
+      y = 10
+        lambda { p defined?(y) }.call
+    end
+
+    def proc_can_modify_outer_scope_locals
+      y = 10
+      lambda { y = 20 }.call
+      p y
+    end
+
+    def proc_destroys_block_local_vars_on_exit
+      lambda { y = 10 }.call
+      p defined?(y)
+    end
+
+    proc_can_see_outer_scope_locals         #=&gt; "local-variable"
+    proc_can_modify_outer_scope_locals      #=&gt; 20
+    proc_destroys_block_local_vars_on_exit  #=&gt; nil
+
+    # Code snippet courtesy of the Practicing Rubyist.
+</code></pre>
+
+<p>For the record, Procs can be executed <a href="http://www.skorks.com/2010/05/closures-a-simple-explanation-using-ruby/">3 ways</a>.</p>
+
+<pre><code>    # 1 call method
+    puts Proc.new{|x|"blah1"*x}.call(2)
+
+    # 2 array syntax
+    puts Proc.new{|x|"blah1"*x}[2]
+
+    # 3 dot syntax
+    puts Proc.new{|x|"blah1"*x}.(2)
+</code></pre>
+
+<h3>What are the differences between <code>Procs</code> and lambdas?</h3>
+
+<p>Procs and lambdas behave differently upon being returned. As soon as procs are returned, they will escape the function.</p>
+
+<p>For example, if you call return within a method, as soon as the proc hits the method is escaped and that value is returned. Nothing after the initial <code>return</code> will be called.</p>
+
+<pre><code>    def my_method
+      puts "before proc"
+      my_proc = Proc.new do
+        puts "inside proc"
+        return
+      end
+      my_proc.call
+      puts "after proc"
+    end
+
+    my_method
+
+    #=&gt; before proc
+    #=&gt; inside proc
+
+    # code snippets courtesy of Alan Skorks.
+</code></pre>
+
+<p>The final <code>puts</code> in the method was never executed because the <code>return</code> within <code>my_proc.call</code> dumped us out of the method.</p>
+
 <p>Whereas a lambda will let the function continue after the return value, until the whole function has been run.</p>
 
-<p>Possible downside with lambdas is that they can leak memory. This happens when local variables, which would normally be garbage collected by Ruby&rsquo;s native gc, are instead persisted by their [ association ?? ] with the lambda.</p>
+<pre><code>    def my_method
+      puts "before proc"
+      my_proc = lambda do
+        puts "inside proc"
+        return
+      end
+      my_proc.call
+      puts "after proc"
+    end
+
+    my_method
+
+    #=&gt; before proc
+    #=&gt; inside proc
+    #=&gt; after proc
+</code></pre>
+
+<p>Possible downside with lambdas is that they can leak memory. This happens when local variables, which would normally be garbage collected by Ruby&rsquo;s native gc, are instead persisted by lambda&rsquo;s reference to them.</p>
 
 <h2>Resources for further reading:</h2>
 
 <ol>
-<li>Skorks (two posts &mdash; on closures and procs / lambdas)</li>
-<li>Rubyist thing</li>
+<li>Skorks on <a href="http://www.skorks.com/2010/05/closures-a-simple-explanation-using-ruby/">Closures</a>, and Skorks on <a href="http://www.skorks.com/2010/05/ruby-procs-and-lambdas-and-the-difference-between-them/">Procs and lambdas</a>.</li>
+<li><a href="https://practicingruby.com/articles/shared/mvzhovpjbghr">Practicing Ruby</a></li>
 <li>JavaScript 101 is garbaggio #=> find something better.</li>
 </ol>
 
