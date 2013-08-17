@@ -14,11 +14,11 @@ Closures allow declarative programming languages - specifically, languages that 
 
 They are found in [many popular languages](http://stackoverflow.com/questions/1423002/how-different-programming-languages-use-closures) including 
 
-* JavaScript 
-* Ruby 
-* Python 
-* C# and 
-* Objective-C.
+	* JavaScript 
+	* Ruby 
+	* Python 
+	* C# and 
+	* Objective-C.
 
 In Ruby, every `Proc` object is a closure, which means that each code block you write captures references to data from its surrounding scope for later use. [(Source)](https://practicingruby.com/articles/shared/mvzhovpjbghr). The core properties of closures, and by extension Ruby procs and lambdas, are:
 
