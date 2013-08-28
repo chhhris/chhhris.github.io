@@ -9,7 +9,8 @@
   <meta name="author" content="chhhris lake">
 
   
-  <meta name="description" content="What are Procs and lambdas: Closure in Ruby First: What is a closure? (Somehow my English degree didn&rsquo;t teach me this :) Closures allow &hellip;">
+  <meta name="description" content="Closures in JavaScript What are JavaScript closures? A closure is a kind of object that combines two things: a function
+that function&rsquo;s &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -44,6 +45,91 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/27/javascript-closures/">JavaScript Closures</a></h1>
+    
+  </header>
+
+
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-27T23:46:00-04:00" pubdate data-updated="true">Aug 27<span>th</span>, 2013</time>
+      
+    </p>
+  
+  
+
+
+  <div class="entry-content"><h1>Closures in JavaScript</h1>
+
+<h2>What are JavaScript closures?</h2>
+
+<p>A closure is a kind of object that combines two things:</p>
+
+<ol>
+<li>a function</li>
+<li>that function&rsquo;s environment</li>
+</ol>
+
+
+<p>The function&rsquo;s environment consists of any local variables that were in-scope at the time that the closure was created.</p>
+
+<h3>How do you create a closure in JavaScript?</h3>
+
+<p>Simply, in JavaScript, if you use the function keyword inside another function, you are creating a closure.</p>
+
+<p>As such, local variables remain accessible after returning from the function you called; the inner function still has access to the outer function’s variables even after the outer function has returned.</p>
+
+<p>Here&rsquo;s an example of a simple closure in JavaScript:</p>
+
+<pre><code>&lt;script&gt;
+
+var sayHello = function alertGreeting(name){
+    var greeting = "Hello";
+    function displayName() {
+        alert(greeting + " " + name);
+    };
+    displayName();
+};
+
+sayHello("Chris");
+
+&lt;/script&gt;
+</code></pre>
+
+<p><a href="http://jsfiddle.net/chhhris/ee46b/">Sample the code on JS Fiddle</a></p>
+
+<p>There&rsquo;s a lot, lot more on closures but I just wanted to get the basic definition down. If you want to go deeper, here are a few resources to get you started.</p>
+
+<ul>
+<li>Mozilla Developer Network <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures">post on JS closures</a>.</li>
+<li>Best real-world example utilizing JS closures I&rsquo;ve found, MDN&rsquo;s <a href="http://jsfiddle.net/vnkuZ/">example on JS Fiddle</a>.</li>
+<li>Interesting, albeit a bit too <em>bubbly</em>, post on <a href="http://javascriptissexy.com/understand-javascript-closures-with-ease/">JavaScript Is Sexy</a>.</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -805,6 +891,10 @@ You probably read the deck, but if you didn&rsquo;t, here are a few takeaways fr
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/08/27/javascript-closures/">JavaScript Closures</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/08/06/the-difference-between-procs/">The difference between procs, blocks and lambdas</a>
       </li>
     
@@ -818,10 +908,6 @@ You probably read the deck, but if you didn&rsquo;t, here are a few takeaways fr
     
       <li class="post">
         <a href="/blog/2013/06/23/ruby-reference-tables/">Ruby reference tables</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/19/sinatra-is-having-a-moment/">Sinatra is having a moment</a>
       </li>
     
   </ul>

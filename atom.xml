@@ -3,7 +3,7 @@
   <title><![CDATA[Super Computer.]]></title>
   <link href="http://chhhris.github.io/atom.xml" rel="self"/>
   <link href="http://chhhris.github.io/"/>
-  <updated>2013-08-17T15:24:01-04:00</updated>
+  <updated>2013-08-28T00:13:13-04:00</updated>
   <id>http://chhhris.github.io/</id>
   <author>
     <name><![CDATA[chhhris lake]]></name>
@@ -11,6 +11,61 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript Closures]]></title>
+    <link href="http://chhhris.github.io/blog/2013/08/27/javascript-closures/"/>
+    <updated>2013-08-27T23:46:00-04:00</updated>
+    <id>http://chhhris.github.io/blog/2013/08/27/javascript-closures</id>
+    <content type="html"><![CDATA[<h1>Closures in JavaScript</h1>
+
+<h2>What are JavaScript closures?</h2>
+
+<p>A closure is a kind of object that combines two things:</p>
+
+<ol>
+<li>a function</li>
+<li>that function&rsquo;s environment</li>
+</ol>
+
+
+<p>The function&rsquo;s environment consists of any local variables that were in-scope at the time that the closure was created.</p>
+
+<h3>How do you create a closure in JavaScript?</h3>
+
+<p>Simply, in JavaScript, if you use the function keyword inside another function, you are creating a closure.</p>
+
+<p>As such, local variables remain accessible after returning from the function you called; the inner function still has access to the outer function’s variables even after the outer function has returned.</p>
+
+<p>Here&rsquo;s an example of a simple closure in JavaScript:</p>
+
+<pre><code>&lt;script&gt;
+
+var sayHello = function alertGreeting(name){
+    var greeting = "Hello";
+    function displayName() {
+        alert(greeting + " " + name);
+    };
+    displayName();
+};
+
+sayHello("Chris");
+
+&lt;/script&gt;
+</code></pre>
+
+<p><a href="http://jsfiddle.net/chhhris/ee46b/">Sample the code on JS Fiddle</a></p>
+
+<p>There&rsquo;s a lot, lot more on closures but I just wanted to get the basic definition down. If you want to go deeper, here are a few resources to get you started.</p>
+
+<ul>
+<li>Mozilla Developer Network <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures">post on JS closures</a>.</li>
+<li>Best real-world example utilizing JS closures I&rsquo;ve found, MDN&rsquo;s <a href="http://jsfiddle.net/vnkuZ/">example on JS Fiddle</a>.</li>
+<li>Interesting, albeit a bit too <em>bubbly</em>, post on <a href="http://javascriptissexy.com/understand-javascript-closures-with-ease/">JavaScript Is Sexy</a>.</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The difference between procs, blocks and lambdas]]></title>
