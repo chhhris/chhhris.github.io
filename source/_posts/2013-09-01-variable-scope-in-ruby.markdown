@@ -13,15 +13,19 @@ If you're learning Ruby, one of the first concepts you'll likely encounter - aft
 
 For this post I'll focus on the latter point and try to illustrate how scope is defined across the different kinds of variables available to the Ruby programmer.
 
-* Local variables. Expressed lower case e.g. `var`, `str`, `fido`, `pommes_frites`
+### Ruby Variables
 
-* Instance variables. Can start with lower or upper case letters. Can't miss with their prepended '@' sign e.g. `@user`, `@bike`, `@Selfie`
+* **Local variables.** Expressed lower case e.g. `var`, `str`, `fido`, `pommes_frites`
 
-* Class variables. Same rules apply as with their instance cousins, only prettier (or uglier, depending on your pov) with the double '@' signs in front! `@@User`, `@@parcheesi`, `@@Brooklyn`
+* **Instance variables.** Can start with lower or upper case letters. Can't miss with their prepended '@' sign e.g. `@user`, `@bike`, `@Selfie`
 
-* Global variables. They're like pawns in chess who make it to the back row: they can be whatever they want, whenever they want (so long as they begin with a '$' sign). Upper case. Lower case. Periods. Colons. Eat your heart out. `$9`, `$!!`, `$foo_bar`, `$AmericasGotTalent`, `$meow`
+* **Class variables.** Same rules apply as with their instance cousins, only prettier (or uglier, depending on your pov) with the double '@' signs in front! `@@User`, `@@parcheesi`, `@@Brooklyn`
+
+* **Global variables.** They're like pawns in chess who make it to the back row: they can be whatever they want, whenever they want (so long as they begin with a '$' sign). Upper case. Lower case. Periods. Colons. Eat your heart out. `$9`, `$!!`, `$foo_bar`, `$AmericasGotTalent`, `$meow`
 
 Now that you see how to tell the variables apart, let's play with some example code to begin distinguishing between each variable's scope.
+
+### Ruby variables at the class level
 
 Let's create a class and create an example of each variable.
 
@@ -39,6 +43,8 @@ Simple. Run the code and you get exactly what you'd expect.
 	  #=> "class var at class level"
 	  #=> "global var at class level"
 	  
+### Ruby variables and class instance methods
+
 Now let's define an instance method to see what happens when we (i) try to print the above class level variables, and (ii) reassign the variables. 
 
 	class Verryables
@@ -74,6 +80,8 @@ Survey says:
 	#=> "global var at class level"
 
 Is that what you were expecting? Now let's play around and try to see what happens if we reassign (or define, as the case may be) these variables. 
+
+### Testing scope between class methods and instance methods
 
 Here we'll change the messages, print them, and then go back up to the class level and print out the original variables to demonstrate which variables changed and which stayed the same. 
 
@@ -186,6 +194,8 @@ Survey says:
 	
 Phew, that's bordering on TL;DR but I hope at least it helps illustrate how each variable responds when changing scopes (in this case, we went from the Class level, down to an instance of the class, and then back up to the Class level).
 
+### Variables, further defined
+
 Here's the definition for each variable, and how the code above illustrates it. 
 
 * **Local variable** (`local_var` in the earlier example). 
@@ -218,7 +228,9 @@ Here's the definition for each variable, and how the code above illustrates it.
 * **Global variable** (`$GlobalVar` in the earlier example)
 
    Within a class, global variables offer the same functionality as class variables. What distinguishes a global variable from a class variables is that global variables are visible all over the program, from within a class to instances of the class, to between classes and objects. 
-   
+
+### Class v. global variables
+
    In the example above, since we've only defined one class, there's no practical dinstinction between how the global variable behaved v. the class variable. 
    
    So let's quickly create a new example, with two distinct classes, to demonstrate how global and class variables differ. 
@@ -248,6 +260,6 @@ Here's the definition for each variable, and how the code above illustrates it.
 
 There you have it. We've explored bit how scope differs between the four kinds of variables in Ruby. Even though these concepts are quite basic, in my experience as a developer so far, I haven't had many opportunities to use class and global variables (whereas local and instance variables are quite common, particularly in Rails apps), so it's been a helpful exercise in getting it all properly sorted in my head :)
 
-Would love your feedback, and I'd welcome any thoughts or clarifications in the comments below. Jk: since I don't have comments enabled why don't you tweet at me! 
+Would love your feedback, and I'd welcome any thoughts or clarifications in the comments below. Would love your feedback, and I'd welcome any thoughts or clarifications in the comments below. Jk. I don't have comments enabled why don't you tweet at me!  
 <a href="https://twitter.com/intent/tweet?screen_name=chhhris" class="twitter-mention-button" data-related="chhhris">Tweet to @chhhris</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
