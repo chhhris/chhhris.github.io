@@ -91,14 +91,14 @@ end
   #=&gt; "global var at class level"
 </code></pre>
 
-<p>Now let&rsquo;s define an instance method to see what happens when we ()i) try to print the above class level variables, and (ii) reassign the variables.</p>
+<p>Now let&rsquo;s define an instance method to see what happens when we (i) try to print the above class level variables, and (ii) reassign the variables.</p>
 
 <pre><code>class Verryables
   ...
 
   def instance_method
-    p local_var     #=&gt; results in "undefined local variable"
-    p @instance     #=&gt; returns nil
+    p local_var
+    p @instance
     p @@class_var
     p $GlobalVar
   end
