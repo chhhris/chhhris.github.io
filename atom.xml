@@ -3,7 +3,7 @@
   <title><![CDATA[Super Computer.]]></title>
   <link href="http://chhhris.github.io/atom.xml" rel="self"/>
   <link href="http://chhhris.github.io/"/>
-  <updated>2013-09-01T21:57:30-07:00</updated>
+  <updated>2013-09-02T11:13:45-07:00</updated>
   <id>http://chhhris.github.io/</id>
   <author>
     <name><![CDATA[chhhris lake]]></name>
@@ -25,15 +25,19 @@
 
 <p>For this post I&rsquo;ll focus on the latter point and try to illustrate how scope is defined across the different kinds of variables available to the Ruby programmer.</p>
 
+<h3>Ruby Variables</h3>
+
 <ul>
-<li><p>Local variables. Expressed lower case e.g. <code>var</code>, <code>str</code>, <code>fido</code>, <code>pommes_frites</code></p></li>
-<li><p>Instance variables. Can start with lower or upper case letters. Can&rsquo;t miss with their prepended &lsquo;@&rsquo; sign e.g. <code>@user</code>, <code>@bike</code>, <code>@Selfie</code></p></li>
-<li><p>Class variables. Same rules apply as with their instance cousins, only prettier (or uglier, depending on your pov) with the double &lsquo;@&rsquo; signs in front! <code>@@User</code>, <code>@@parcheesi</code>, <code>@@Brooklyn</code></p></li>
-<li><p>Global variables. They&rsquo;re like pawns in chess who make it to the back row: they can be whatever they want, whenever they want (so long as they begin with a &lsquo;$&rsquo; sign). Upper case. Lower case. Periods. Colons. Eat your heart out. <code>$9</code>, <code>$!!</code>, <code>$foo_bar</code>, <code>$AmericasGotTalent</code>, <code>$meow</code></p></li>
+<li><p><strong>Local variables.</strong> Expressed lower case e.g. <code>var</code>, <code>str</code>, <code>fido</code>, <code>pommes_frites</code></p></li>
+<li><p><strong>Instance variables.</strong> Can start with lower or upper case letters. Can&rsquo;t miss with their prepended &lsquo;@&rsquo; sign e.g. <code>@user</code>, <code>@bike</code>, <code>@Selfie</code></p></li>
+<li><p><strong>Class variables.</strong> Same rules apply as with their instance cousins, only prettier (or uglier, depending on your pov) with the double &lsquo;@&rsquo; signs in front! <code>@@User</code>, <code>@@parcheesi</code>, <code>@@Brooklyn</code></p></li>
+<li><p><strong>Global variables.</strong> They&rsquo;re like pawns in chess who make it to the back row: they can be whatever they want, whenever they want (so long as they begin with a &lsquo;$&rsquo; sign). Upper case. Lower case. Periods. Colons. Eat your heart out. <code>$9</code>, <code>$!!</code>, <code>$foo_bar</code>, <code>$AmericasGotTalent</code>, <code>$meow</code></p></li>
 </ul>
 
 
 <p>Now that you see how to tell the variables apart, let&rsquo;s play with some example code to begin distinguishing between each variable&rsquo;s scope.</p>
+
+<h3>Ruby variables at the class level</h3>
 
 <p>Let&rsquo;s create a class and create an example of each variable.</p>
 
@@ -52,6 +56,8 @@ end
   #=&gt; "class var at class level"
   #=&gt; "global var at class level"
 </code></pre>
+
+<h3>Ruby variables and class instance methods</h3>
 
 <p>Now let&rsquo;s define an instance method to see what happens when we (i) try to print the above class level variables, and (ii) reassign the variables.</p>
 
@@ -90,6 +96,8 @@ end
 </code></pre>
 
 <p>Is that what you were expecting? Now let&rsquo;s play around and try to see what happens if we reassign (or define, as the case may be) these variables.</p>
+
+<h3>Testing scope between class methods and instance methods</h3>
 
 <p>Here we&rsquo;ll change the messages, print them, and then go back up to the class level and print out the original variables to demonstrate which variables changed and which stayed the same.</p>
 
@@ -203,6 +211,8 @@ end
 
 <p>Phew, that&rsquo;s bordering on TL;DR but I hope at least it helps illustrate how each variable responds when changing scopes (in this case, we went from the Class level, down to an instance of the class, and then back up to the Class level).</p>
 
+<h3>Variables, further defined</h3>
+
 <p>Here&rsquo;s the definition for each variable, and how the code above illustrates it.</p>
 
 <ul>
@@ -231,41 +241,43 @@ end
 <p>  Because <code>@@class_var</code>&rsquo;s scope is shared vertically, we can reassign its value anywhere, and the change in state will be maintained elsewhere in the program. Therefore, when we call <code>@@class_var</code> again in the second instance method, the new message is printed, and finally when we call it again in the class method. In the final class method, <code>@@class_var</code> didn&rsquo;t change back to the original class level definition, like we saw with the instance variable <code>@instance</code>.</p></li>
 <li><p><strong>Global variable</strong> (<code>$GlobalVar</code> in the earlier example)</p>
 
-<p> Within a class, global variables offer the same functionality as class variables. What distinguishes a global variable from a class variables is that global variables are visible all over the program, from within a class to instances of the class, to between classes and objects.</p>
-
-<p> In the example above, since we&rsquo;ve only defined one class, there&rsquo;s no practical dinstinction between how the global variable behaved v. the class variable.</p>
-
-<p> So let&rsquo;s quickly create a new example, with two distinct classes, to demonstrate how global and class variables differ.</p>
-
-<pre><code>class Class1
-  $GlobeTrotter = "Global variable from class 1."
-  p $GlobeTrotter
-
-  @@ClassVariable = "Class variable from class 1."
-  p @@ClassVariable
-end
-
-class Class2
-  puts "&gt;&gt; calling Class 2"
-  p $GlobeTrotter
-  p @@ClassVariable
-end
-
-c1 = Class1.new
-c2 = Class2.new
-
-#=&gt; "Global variable from class 1."
-#=&gt; "Class variable from class 1."
-#=&gt; "&gt;&gt; calling Class 2"
-#=&gt; "Global variable from class 1."
-#=&gt; uninitialized class variable @@ClassVariable in Class2 (NameError)
-</code></pre></li>
+<p> Within a class, global variables offer the same functionality as class variables. What distinguishes a global variable from a class variables is that global variables are visible all over the program, from within a class to instances of the class, to between classes and objects.</p></li>
 </ul>
 
 
+<h3>Class v. global variables</h3>
+
+<p>   In the example above, since we&rsquo;ve only defined one class, there&rsquo;s no practical dinstinction between how the global variable behaved v. the class variable.</p>
+
+<p>   So let&rsquo;s quickly create a new example, with two distinct classes, to demonstrate how global and class variables differ.</p>
+
+<pre><code>  class Class1
+    $GlobeTrotter = "Global variable from class 1."
+    p $GlobeTrotter
+
+    @@ClassVariable = "Class variable from class 1."
+    p @@ClassVariable
+  end
+
+  class Class2
+    puts "&gt;&gt; calling Class 2"
+    p $GlobeTrotter
+    p @@ClassVariable
+  end
+
+  c1 = Class1.new
+  c2 = Class2.new
+
+  #=&gt; "Global variable from class 1."
+  #=&gt; "Class variable from class 1."
+  #=&gt; "&gt;&gt; calling Class 2"
+  #=&gt; "Global variable from class 1."
+  #=&gt; uninitialized class variable @@ClassVariable in Class2 (NameError)
+</code></pre>
+
 <p>There you have it. We&rsquo;ve explored bit how scope differs between the four kinds of variables in Ruby. Even though these concepts are quite basic, in my experience as a developer so far, I haven&rsquo;t had many opportunities to use class and global variables (whereas local and instance variables are quite common, particularly in Rails apps), so it&rsquo;s been a helpful exercise in getting it all properly sorted in my head :)</p>
 
-<p>Would love your feedback, and I&rsquo;d welcome any thoughts or clarifications in the comments below. Jk: since I don&rsquo;t have comments enabled why don&rsquo;t you tweet at me!
+<p>Would love your feedback, and I&rsquo;d welcome any thoughts or clarifications in the comments below. Would love your feedback, and I&rsquo;d welcome any thoughts or clarifications in the comments below. Jk. I don&rsquo;t have comments enabled why don&rsquo;t you tweet at me!<br/>
 <a href="https://twitter.com/intent/tweet?screen_name=chhhris" class="twitter-mention-button" data-related="chhhris">Tweet to @chhhris</a></p>
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
