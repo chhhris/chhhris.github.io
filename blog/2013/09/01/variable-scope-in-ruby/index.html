@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Variable Scope in Ruby - Super Computer.</title>
+  <meta name="author" content="chhhris lake">
+
+  
+  <meta name="description" content="Variable Scope in Ruby Defining scope between Global, Class, Instance and Local variables in Ruby If you&rsquo;re learning Ruby, one of the first &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://chhhris.github.io/blog/2013/09/01/variable-scope-in-ruby/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Super Computer." type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <img src="/images/disk.png" />
+  <h1><a href="/">Super Computer.</a></h1>
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Variable Scope in Ruby</h1>
+    
+  </header>
+
+
+
+
+
+<div class="entry-content"><h1>Variable Scope in Ruby</h1>
+
+<h2>Defining scope between Global, Class, Instance and Local variables in Ruby</h2>
+
+<p>If you&rsquo;re learning Ruby, one of the first concepts you&rsquo;ll likely encounter &ndash; after Objects and Classes &ndash; is the concept of variables and how they differ by &ldquo;scope.&rdquo;</p>
+
+<p>For this post I&rsquo;ll focus on the latter point and try to illustrate how scope is defined across the different kinds of variables available to the Ruby programmer.</p>
+
+<ul>
+<li><p>Local variables. Expressed lower case e.g. <code>var</code>, <code>str</code>, <code>fido</code>, <code>pommes_frites</code></p></li>
+<li><p>Instance variables. Can start with lower or upper case letters. Can&rsquo;t miss with their prepended &lsquo;@&rsquo; sign e.g. <code>@user</code>, <code>@bike</code>, <code>@Selfie</code></p></li>
+<li><p>Class variables. Same rules apply as with their instance cousins, only prettier (or uglier, depending on your pov) with the double &lsquo;@&rsquo; signs in front! <code>@@User</code>, <code>@@parcheesi</code>, <code>@@Brooklyn</code></p></li>
+<li><p>Global variables. They&rsquo;re like pawns in chess who make it to the back row: they can be whatever they want, whenever they want (so long as they begin with a &lsquo;$&rsquo; sign). Upper case. Lower case. Periods. Colons. Eat your heart out. <code>$9</code>, <code>$!!</code>, <code>$foo_bar</code>, <code>$AmericasGotTalent</code>, <code>$meow</code></p></li>
+</ul>
+
+
+<p>Now that you see how to tell the variables apart, let&rsquo;s play with some example code to begin distinguishing between each variable&rsquo;s scope.</p>
+
+<p>Let&rsquo;s create a class and create an example of each variable.</p>
+
+<pre><code>class Verryables
+  print local_var = "local var at class level"
+  p @instance = "instance var at class level"
+  p @@class_var = "class var at class level"
+  p $GlobalVar = "global var at class level"
+end
+</code></pre>
+
+<p>Simple. Run the code and you get exactly what you&rsquo;d expect.</p>
+
+<pre><code>  #=&gt; "local var at class level"
+  #=&gt; "instance var at class level"
+  #=&gt; "class var at class level"
+  #=&gt; "global var at class level"
+</code></pre>
+
+<p>Now let&rsquo;s define an instance method to see what happens when we ()i) try to print the above class level variables, and (ii) reassign the variables.</p>
+
+<pre><code>class Verryables
+  ...
+
+  def instance_method
+    p local_var     #=&gt; results in "undefined local variable"
+    p @instance     #=&gt; returns nil
+    p @@class_var
+    p $GlobalVar
+  end
+
+  def second_instance_method
+    puts "second instance method"
+    p @instance
+    p @@class_var
+    p $GlobalVar
+  end
+end
+</code></pre>
+
+<p>What do you think the result would be? If you&rsquo;re new to Ruby, think for a minute about what you expect will happen when we run it…</p>
+
+<p>Survey says:</p>
+
+<pre><code>#=&gt; "undefined local variable"
+#=&gt; nil
+#=&gt; "class var at class level"
+#=&gt; "global var at class level"
+
+#=&gt; "second instance method"
+#=&gt; nil
+#=&gt; "class var at class level"
+#=&gt; "global var at class level"
+</code></pre>
+
+<p>Is that what you were expecting? Now let&rsquo;s play around and try to see what happens if we reassign (or define, as the case may be) these variables.</p>
+
+<p>Here we&rsquo;ll change the messages, print them, and then go back up to the class level and print out the original variables to demonstrate which variables changed and which stayed the same.</p>
+
+<pre><code>class Verryables
+  puts "&gt;&gt; class level definitions"
+  p local_var   = "local var at class level"
+  p @instance   = "instance var at class level"
+  p @@class_var = "class var at class level"
+  p $GlobalVar  = "global var at class level"
+
+  def instance_method
+    puts "&gt;&gt; begin instance method"
+    # p local_var (commented out, else "undefined local var" blows up the program)
+    p @instance
+    p @@class_var
+    p $GlobalVar
+    puts "&gt;&gt; assigned and reassigned, as the case may be"
+    p local_var     = "local var from instance_method"
+    p @instance     = "instance var from instance_method"
+    p @@class_var   = "class var from instance_method"
+    p $GlobalVar    = "global var from instance_method"
+  end
+
+  def second_instance_method
+    puts "&gt;&gt; second instance method"
+    p @instance
+    p @@class_var
+    p $GlobalVar
+  end
+
+  def self.class_method
+    puts "&gt;&gt; begin class method"
+    # p local_var #=&gt; undefined local variable
+    p @instance
+    p @@class_var
+    p $GlobalVar
+  end
+end
+</code></pre>
+
+<p>The action here will be in the second set of print outs (note: I&rsquo;ve added a puts messages at the beginning of each method to help us see what messages are being printed from which method).</p>
+
+<p>Survey says:</p>
+
+<pre><code>class Verryables
+  puts "&gt;&gt; class level definitions"
+  p local_var   = "local var at class level"
+  p @instance   = "instance var at class level"
+  p @@class_var = "class var at class level"
+  p $GlobalVar  = "global var at class level"
+
+  #=&gt; "&gt;&gt; class level definitions"
+  #=&gt; "local var at class level"
+  #=&gt; "instance var at class level"
+  #=&gt; "class var at class level"
+  #=&gt; "global var at class level"
+
+
+  def instance_method
+    puts "&gt;&gt; begin instance method"
+    # p local_var (commented out, else "undefined local var" blows up the program)
+    p @instance
+    p @@class_var
+    p $GlobalVar
+    puts "&gt;&gt; assigned and reassigned, as the case may be"
+    p local_var     = "local var from instance_method"
+    p @instance     = "instance var from instance_method"
+    p @@class_var   = "class var from instance_method"
+    p $GlobalVar    = "global var from instance_method"
+  end
+
+  #=&gt; "&gt;&gt; begin instance method"
+  #=&gt; nil
+  #=&gt; "class var at class level"
+  #=&gt; "global var at class level"
+  #=&gt; "&gt;&gt; assigned and reassigned, as the case may be"
+  #=&gt; "local var from instance_method"
+  #=&gt; "instance var from instance_method"
+  #=&gt; "class var from instance_method"
+  #=&gt; "global var from instance_method"
+
+  def second_instance_method
+    puts "&gt;&gt; second instance method"
+    # p local_var #=&gt; undefined local variable
+    p @instance
+    p @@class_var
+    p $GlobalVar
+  end
+
+  #=&gt; "&gt;&gt; second instance method"
+  #=&gt; "instance var from instance_method"
+  #=&gt; "class var from instance_method"
+  #=&gt; "global var from instance_method"
+
+  def self.class_method
+    puts "&gt;&gt; begin class method"
+    p local_var
+    p @instance
+    p @@class_var
+    p $GlobalVar
+  end
+
+  #=&gt; "&gt;&gt; begin class method"
+  #=&gt; undefined local variable
+  #=&gt; "instance var at class level"
+  #=&gt; "class var from instance_method"
+  #=&gt; "global var from instance_method"
+
+end
+</code></pre>
+
+<p>Phew, that&rsquo;s bordering on TL;DR but I hope at least it helps illustrate how each variable responds when changing scopes (in this case, we went from the Class level, down to an instance of the class, and then back up to the Class level).</p>
+
+<p>Here&rsquo;s the definition for each variable, and how the code above illustrates it.</p>
+
+<ul>
+<li><p><strong>Local variable</strong> (<code>local_var</code> in the earlier example).</p>
+
+<p>  As the name implies, local variables have limited scope &ndash; within a method definition, for example. Local variables don’t survive the scope change between class definitions and their inner method definitions. As such, local variable names can be reused in different scopes.</p>
+
+<p>  Using our earlier example, we could use the name <code>local_var</code> throughout the program, and so long as each usage was within a different scope, each <code>local_var</code> will be treated as completely separate.</p>
+
+<p>  That&rsquo;s why, despite having defined a <code>local_var</code> at the class level, when we initially called it within our instance method, the result was &ldquo;undefined local variable.&rdquo; Then within the instance method, we defined a <code>local_var</code>, but as the program moved to the class method we again received an &ldquo;undefined&rdquo; error.</p>
+
+<p>  Think of scope as apartments in a building, and your keys as local variables. The key that gets you into one apartment is going to work for another apartment.</p></li>
+<li><p><strong>Instance variable</strong> (<code>@instance</code> in the earlier example)</p>
+
+<p>  Instance variables are only visible to the object to which they belong. An instance variable initialized in one method definition, inside a particular class, is the same as the instance variable of the same name referred to in other method definitions of the same class.</p>
+
+<p>  In our code above, we defined an instance variable <code>@instance</code> at the class level, and you can see that when we intitially called it, the return was <code>nil</code>. However when we defined <code>@instance</code> within instance method, and called it within the second instance method, we demonstrated that <code>@instance</code> is the same across both instance methods of the same class. We&rsquo;ve established that the <code>@instance</code>&rsquo;s scope encompasses both the class and the instance method.</p>
+
+<p>  Then jumping back to the class level, via class_method, we can see the <code>@instance</code> that got printed was the original defined at the top class level. Thus, instance variables share scope across <em>instances</em> of the class, but that instance variables do not survive the change in scope from class level to the class instance.</p></li>
+<li><p><strong>Class variable</strong> (<code>@@class_var</code> in the earlier example)</p>
+
+<p>  Class variables&#8217; scope is shared between a class and instances of that class, yet is not visible to any other objects. Typically, this means class variables are used to share data between class-method definitions and instance- method definitions.</p>
+
+<p>  To illustrate this, our example shows how definig our class variable <code>@@class_var</code> at the class level, we are then successfully able to call it within the instance method.</p>
+
+<p>  Because <code>@@class_var</code>&rsquo;s scope is shared vertically, we can reassign its value anywhere, and the change in state will be maintained elsewhere in the program. Therefore, when we call <code>@@class_var</code> again in the second instance method, the new message is printed, and finally when we call it again in the class method. In the final class method, <code>@@class_var</code> didn&rsquo;t change back to the original class level definition, like we saw with the instance variable <code>@instance</code>.</p></li>
+<li><p><strong>Global variable</strong> (<code>$GlobalVar</code> in the earlier example)</p>
+
+<p> Within a class, global variables offer the same functionality as class variables. What distinguishes a global variable from a class variables is that global variables are visible all over the program, from within a class to instances of the class, to between classes and objects.</p>
+
+<p> In the example above, since we&rsquo;ve only defined one class, there&rsquo;s no practical dinstinction between how the global variable behaved v. the class variable.</p>
+
+<p> So let&rsquo;s quickly create a new example, with two distinct classes, to demonstrate how global and class variables differ.</p>
+
+<pre><code>class Class1
+  $GlobeTrotter = "Global variable from class 1."
+  p $GlobeTrotter
+
+  @@ClassVariable = "Class variable from class 1."
+  p @@ClassVariable
+end
+
+class Class2
+  puts "&gt;&gt; calling Class 2"
+  p $GlobeTrotter
+  p @@ClassVariable
+end
+
+c1 = Class1.new
+c2 = Class2.new
+
+#=&gt; "Global variable from class 1."
+#=&gt; "Class variable from class 1."
+#=&gt; "&gt;&gt; calling Class 2"
+#=&gt; "Global variable from class 1."
+#=&gt; uninitialized class variable @@ClassVariable in Class2 (NameError)
+</code></pre></li>
+</ul>
+
+
+<p>There you have it. We&rsquo;ve explored bit how scope differs between the four kinds of variables in Ruby. Even though these concepts are quite basic, in my experience as a developer so far, I haven&rsquo;t had many opportunities to use class and global variables (whereas local and instance variables are quite common, particularly in Rails apps), so it&rsquo;s been a helpful exercise in getting it all properly sorted in my head :)</p>
+
+<p>Would love your feedback, and I&rsquo;d welcome any thoughts or clarifications in the comments below. Jk: since I don&rsquo;t have comments enabled why don&rsquo;t you tweet at me!
+<a href="https://twitter.com/intent/tweet?screen_name=chhhris" class="twitter-mention-button" data-related="chhhris">Tweet to @chhhris</a></p>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">chhhris lake</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-01T18:24:00-07:00" pubdate data-updated="true">Sep 1<span>st</span>, 2013</time>
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://chhhris.github.io/blog/2013/09/01/variable-scope-in-ruby/" data-via="chhhris" data-counturl="http://chhhris.github.io/blog/2013/09/01/variable-scope-in-ruby/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/08/27/javascript-closures/" title="Previous Post: JavaScript Closures">&laquo; JavaScript Closures</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/01/variable-scope-in-ruby/">Variable Scope in Ruby</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/27/javascript-closures/">JavaScript Closures</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/06/the-difference-between-procs/">The difference between procs, blocks and lambdas</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/15/open-source-how-to-git-started/">Open Source: How to Git Started</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/26/infographic-on-deploying-to-production/">Infographic on deploying to production</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/chhhris">@chhhris</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'chhhris',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - chhhris lake -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/javascripts/aharris.js"></script>
+
+</body>
+</html>
