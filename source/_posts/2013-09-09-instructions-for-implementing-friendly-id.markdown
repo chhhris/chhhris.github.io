@@ -12,7 +12,7 @@ categories:
 
 If you're not familiar, [Friendly ID](https://github.com/norman/friendly_id) is a sweet gem that turns Rails standard RESTful urls (e.g. /users/1/) into more friendly and best practice string-based urls (e.g. /chris-lake)
 
-The following instructions were curated from Norman Clarke's Rails [QuickStart guide](https://github.com/norman/friendly_id) and Ryan Bates's [RailsCast](http://railscasts.com/episodes/314-pretty-urls-with-friendlyid). 
+The following instructions were curated from Norman Clarke's [complete documentation](http://norman.github.io/friendly_id/file.Guide.html) and Ryan Bates's [RailsCast](http://railscasts.com/episodes/314-pretty-urls-with-friendlyid) -- because the former is more in-depth than necessary for your run of the mill Rails app, and the latter is not quite deep enough. 
 
 Add FriendlyID to your Rails app's gemfile.
 
@@ -34,7 +34,7 @@ In the migration file - let's use a User model by way of example - `/db/migrate/
 	class AddSlugToUsers < ActiveRecord::Migration 
 	  def change
         add_column :users, :slug, :string
-        add_index :users, :slug
+        add_index :users, :slug, unique: true
       end
     end
 
