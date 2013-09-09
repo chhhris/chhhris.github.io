@@ -3,7 +3,7 @@
   <title><![CDATA[Super Computer.]]></title>
   <link href="http://chhhris.github.io/atom.xml" rel="self"/>
   <link href="http://chhhris.github.io/"/>
-  <updated>2013-09-02T11:13:45-07:00</updated>
+  <updated>2013-09-08T22:40:37-04:00</updated>
   <id>http://chhhris.github.io/</id>
   <author>
     <name><![CDATA[chhhris lake]]></name>
@@ -13,9 +13,63 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Quickly creating a new Rails app]]></title>
+    <link href="http://chhhris.github.io/blog/2013/09/08/quickly-creating-a-new-rails-app/"/>
+    <updated>2013-09-08T22:31:00-04:00</updated>
+    <id>http://chhhris.github.io/blog/2013/09/08/quickly-creating-a-new-rails-app</id>
+    <content type="html"><![CDATA[<h1>Cheat sheet for creating a new Rails app, adapted from the excellent <a href="http://guides.rubyonrails.org/getting_started.html">Rails Guides</a></h1>
+
+<p>Create a new project</p>
+
+<pre><code>$ rails new &lt;project name&gt;
+</code></pre>
+
+<p>Switch into the correct folder</p>
+
+<pre><code>$ cd &lt;project name&gt;
+</code></pre>
+
+<p>Get the database up</p>
+
+<pre><code>$ rake db:create
+</code></pre>
+
+<p>To start the rails server:</p>
+
+<pre><code>$ rails s
+</code></pre>
+
+<p>Create a controller</p>
+
+<pre><code>$ rails generate controller home index
+</code></pre>
+
+<p>If you&rsquo;re using Rails v3.2.13, remove the default home page</p>
+
+<pre><code>$ rm public/index.html
+</code></pre>
+
+<p>Open <code>config/routes.rb</code> and uncomment the root url route</p>
+
+<pre><code>root :to =&gt; "home#index"
+</code></pre>
+
+<p>Scaffold a resource</p>
+
+<pre><code>$ rails generate scaffold &lt;Model_Name&gt; column_name:data_type column_name:data_type 
+</code></pre>
+
+<p>Run another migration</p>
+
+<pre><code>$ rake db:migrate
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Variable Scope in Ruby]]></title>
     <link href="http://chhhris.github.io/blog/2013/09/01/variable-scope-in-ruby/"/>
-    <updated>2013-09-01T18:24:00-07:00</updated>
+    <updated>2013-09-01T18:24:00-04:00</updated>
     <id>http://chhhris.github.io/blog/2013/09/01/variable-scope-in-ruby</id>
     <content type="html"><![CDATA[<h1>Variable Scope in Ruby</h1>
 
@@ -288,7 +342,7 @@ end
   <entry>
     <title type="html"><![CDATA[JavaScript Closures]]></title>
     <link href="http://chhhris.github.io/blog/2013/08/27/javascript-closures/"/>
-    <updated>2013-08-27T23:46:00-07:00</updated>
+    <updated>2013-08-27T23:46:00-04:00</updated>
     <id>http://chhhris.github.io/blog/2013/08/27/javascript-closures</id>
     <content type="html"><![CDATA[<h1>Closures in JavaScript</h1>
 
@@ -343,7 +397,7 @@ sayHello("Chris");
   <entry>
     <title type="html"><![CDATA[The difference between procs, blocks and lambdas]]></title>
     <link href="http://chhhris.github.io/blog/2013/08/06/the-difference-between-procs/"/>
-    <updated>2013-08-06T11:07:00-07:00</updated>
+    <updated>2013-08-06T11:07:00-04:00</updated>
     <id>http://chhhris.github.io/blog/2013/08/06/the-difference-between-procs</id>
     <content type="html"><![CDATA[<h1>What are Procs and lambdas: Closure in Ruby</h1>
 
@@ -468,7 +522,7 @@ sayHello("Chris");
   <entry>
     <title type="html"><![CDATA[Open Source: How to Git Started]]></title>
     <link href="http://chhhris.github.io/blog/2013/07/15/open-source-how-to-git-started/"/>
-    <updated>2013-07-15T23:22:00-07:00</updated>
+    <updated>2013-07-15T23:22:00-04:00</updated>
     <id>http://chhhris.github.io/blog/2013/07/15/open-source-how-to-git-started</id>
     <content type="html"><![CDATA[<h1>Look, Contributing to Open Source is Super EZ</h1>
 
@@ -604,7 +658,7 @@ The official mailing lists are maintained here &ndash; <a href="http://www.ruby-
   <entry>
     <title type="html"><![CDATA[Infographic on deploying to production]]></title>
     <link href="http://chhhris.github.io/blog/2013/06/26/infographic-on-deploying-to-production/"/>
-    <updated>2013-06-26T02:14:00-07:00</updated>
+    <updated>2013-06-26T02:14:00-04:00</updated>
     <id>http://chhhris.github.io/blog/2013/06/26/infographic-on-deploying-to-production</id>
     <content type="html"><![CDATA[<h1>Infographic: From Development to Production</h1>
 
@@ -623,7 +677,7 @@ The official mailing lists are maintained here &ndash; <a href="http://www.ruby-
   <entry>
     <title type="html"><![CDATA[Ruby reference tables]]></title>
     <link href="http://chhhris.github.io/blog/2013/06/23/ruby-reference-tables/"/>
-    <updated>2013-06-23T22:26:00-07:00</updated>
+    <updated>2013-06-23T22:26:00-04:00</updated>
     <id>http://chhhris.github.io/blog/2013/06/23/ruby-reference-tables</id>
     <content type="html"><![CDATA[<h1>Couple of tables worth referencing.</h1>
 
@@ -641,7 +695,7 @@ The official mailing lists are maintained here &ndash; <a href="http://www.ruby-
   <entry>
     <title type="html"><![CDATA[Sinatra is having a moment]]></title>
     <link href="http://chhhris.github.io/blog/2013/06/19/sinatra-is-having-a-moment/"/>
-    <updated>2013-06-19T21:52:00-07:00</updated>
+    <updated>2013-06-19T21:52:00-04:00</updated>
     <id>http://chhhris.github.io/blog/2013/06/19/sinatra-is-having-a-moment</id>
     <content type="html"><![CDATA[<h1>Sinatra is having a moment.</h1>
 
@@ -749,7 +803,7 @@ The official mailing lists are maintained here &ndash; <a href="http://www.ruby-
   <entry>
     <title type="html"><![CDATA[Functional Programming and Ruby]]></title>
     <link href="http://chhhris.github.io/blog/2013/06/16/functional-programming-and-ruby/"/>
-    <updated>2013-06-16T18:43:00-07:00</updated>
+    <updated>2013-06-16T18:43:00-04:00</updated>
     <id>http://chhhris.github.io/blog/2013/06/16/functional-programming-and-ruby</id>
     <content type="html"><![CDATA[<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 
@@ -851,7 +905,7 @@ You probably read the deck, but if you didn&rsquo;t, here are a few takeaways fr
   <entry>
     <title type="html"><![CDATA[A simple expanation of how the NSA program PRISM works]]></title>
     <link href="http://chhhris.github.io/blog/2013/06/11/how-the-nsa-program-prism-works/"/>
-    <updated>2013-06-11T08:44:00-07:00</updated>
+    <updated>2013-06-11T08:44:00-04:00</updated>
     <id>http://chhhris.github.io/blog/2013/06/11/how-the-nsa-program-prism-works</id>
     <content type="html"><![CDATA[<h2>Or, how the author of the infamous top-secret PPT presentation has clearly never seen the inside of a SQL table.</h2>
 

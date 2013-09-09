@@ -9,7 +9,7 @@
   <meta name="author" content="chhhris lake">
 
   
-  <meta name="description" content="Variable Scope in Ruby Defining scope between Global, Class, Instance and Local variables in Ruby If you&rsquo;re learning Ruby, one of the first &hellip;">
+  <meta name="description" content="Cheat sheet for creating a new Rails app, adapted from the excellent Rails Guides Create a new project $ rails new &lt;project name&gt; Switch into &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -50,6 +50,90 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/09/08/quickly-creating-a-new-rails-app/">Quickly Creating a New Rails App</a></h1>
+    
+  </header>
+
+
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-08T22:31:00-04:00" pubdate data-updated="true">Sep 8<span>th</span>, 2013</time>
+      
+    </p>
+  
+  
+
+
+  <div class="entry-content"><h1>Cheat sheet for creating a new Rails app, adapted from the excellent <a href="http://guides.rubyonrails.org/getting_started.html">Rails Guides</a></h1>
+
+<p>Create a new project</p>
+
+<pre><code>$ rails new &lt;project name&gt;
+</code></pre>
+
+<p>Switch into the correct folder</p>
+
+<pre><code>$ cd &lt;project name&gt;
+</code></pre>
+
+<p>Get the database up</p>
+
+<pre><code>$ rake db:create
+</code></pre>
+
+<p>To start the rails server:</p>
+
+<pre><code>$ rails s
+</code></pre>
+
+<p>Create a controller</p>
+
+<pre><code>$ rails generate controller home index
+</code></pre>
+
+<p>If you&rsquo;re using Rails v3.2.13, remove the default home page</p>
+
+<pre><code>$ rm public/index.html
+</code></pre>
+
+<p>Open <code>config/routes.rb</code> and uncomment the root url route</p>
+
+<pre><code>root :to =&gt; "home#index"
+</code></pre>
+
+<p>Scaffold a resource</p>
+
+<pre><code>$ rails generate scaffold &lt;Model_Name&gt; column_name:data_type column_name:data_type 
+</code></pre>
+
+<p>Run another migration</p>
+
+<pre><code>$ rake db:migrate
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/09/01/variable-scope-in-ruby/">Variable Scope in Ruby</a></h1>
     
   </header>
@@ -69,7 +153,7 @@
   
 
 
-<time datetime="2013-09-01T18:24:00-07:00" pubdate data-updated="true">Sep 1<span>st</span>, 2013</time>
+<time datetime="2013-09-01T18:24:00-04:00" pubdate data-updated="true">Sep 1<span>st</span>, 2013</time>
       
     </p>
   
@@ -372,7 +456,7 @@ end
   
 
 
-<time datetime="2013-08-27T23:46:00-07:00" pubdate data-updated="true">Aug 27<span>th</span>, 2013</time>
+<time datetime="2013-08-27T23:46:00-04:00" pubdate data-updated="true">Aug 27<span>th</span>, 2013</time>
       
     </p>
   
@@ -457,7 +541,7 @@ sayHello("Chris");
   
 
 
-<time datetime="2013-08-06T11:07:00-07:00" pubdate data-updated="true">Aug 6<span>th</span>, 2013</time>
+<time datetime="2013-08-06T11:07:00-04:00" pubdate data-updated="true">Aug 6<span>th</span>, 2013</time>
       
     </p>
   
@@ -612,7 +696,7 @@ sayHello("Chris");
   
 
 
-<time datetime="2013-07-15T23:22:00-07:00" pubdate data-updated="true">Jul 15<span>th</span>, 2013</time>
+<time datetime="2013-07-15T23:22:00-04:00" pubdate data-updated="true">Jul 15<span>th</span>, 2013</time>
       
     </p>
   
@@ -778,7 +862,7 @@ The official mailing lists are maintained here &ndash; <a href="http://www.ruby-
   
 
 
-<time datetime="2013-06-26T02:14:00-07:00" pubdate data-updated="true">Jun 26<span>th</span>, 2013</time>
+<time datetime="2013-06-26T02:14:00-04:00" pubdate data-updated="true">Jun 26<span>th</span>, 2013</time>
       
     </p>
   
@@ -827,7 +911,7 @@ The official mailing lists are maintained here &ndash; <a href="http://www.ruby-
   
 
 
-<time datetime="2013-06-23T22:26:00-07:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2013</time>
+<time datetime="2013-06-23T22:26:00-04:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2013</time>
       
     </p>
   
@@ -875,7 +959,7 @@ The official mailing lists are maintained here &ndash; <a href="http://www.ruby-
   
 
 
-<time datetime="2013-06-19T21:52:00-07:00" pubdate data-updated="true">Jun 19<span>th</span>, 2013</time>
+<time datetime="2013-06-19T21:52:00-04:00" pubdate data-updated="true">Jun 19<span>th</span>, 2013</time>
       
     </p>
   
@@ -1013,7 +1097,7 @@ The official mailing lists are maintained here &ndash; <a href="http://www.ruby-
   
 
 
-<time datetime="2013-06-16T18:43:00-07:00" pubdate data-updated="true">Jun 16<span>th</span>, 2013</time>
+<time datetime="2013-06-16T18:43:00-04:00" pubdate data-updated="true">Jun 16<span>th</span>, 2013</time>
       
     </p>
   
@@ -1145,7 +1229,7 @@ You probably read the deck, but if you didn&rsquo;t, here are a few takeaways fr
   
 
 
-<time datetime="2013-06-11T08:44:00-07:00" pubdate data-updated="true">Jun 11<span>th</span>, 2013</time>
+<time datetime="2013-06-11T08:44:00-04:00" pubdate data-updated="true">Jun 11<span>th</span>, 2013</time>
       
     </p>
   
@@ -1193,6 +1277,10 @@ You probably read the deck, but if you didn&rsquo;t, here are a few takeaways fr
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/09/08/quickly-creating-a-new-rails-app/">Quickly creating a new Rails app</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/09/01/variable-scope-in-ruby/">Variable Scope in Ruby</a>
       </li>
     
@@ -1206,10 +1294,6 @@ You probably read the deck, but if you didn&rsquo;t, here are a few takeaways fr
     
       <li class="post">
         <a href="/blog/2013/07/15/open-source-how-to-git-started/">Open Source: How to Git Started</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/26/infographic-on-deploying-to-production/">Infographic on deploying to production</a>
       </li>
     
   </ul>
