@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Quickly creating a new Rails app - Super Computer.</title>
+  <title>Super Computer.</title>
   <meta name="author" content="chhhris lake">
 
   
-  <meta name="description" content="Cheat sheet for creating a new Rails app, adapted from the excellent Rails Guides Create a new project $ rails new &lt;project name&gt; Switch into &hellip;">
+  <meta name="description" content="Or, how the author of the infamous top-secret PPT presentation has clearly never seen the inside of a SQL table. When The Guardian broke the story of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://chhhris.github.io/blog/2013/09/08/quickly-creating-a-new-rails-app/">
+  <link rel="canonical" href="http://chhhris.github.io/blog/page/2/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -42,76 +42,22 @@
 </header>
   <div id="main">
     <div id="content">
-      <div>
-<article class="hentry" role="article">
+      <div class="blog-index">
   
+  
+  
+    <article>
+      
   <header>
     
-      <h1 class="entry-title">Quickly Creating a New Rails App</h1>
+      <h1 class="entry-title"><a href="/blog/2013/06/11/how-the-nsa-program-prism-works/">A Simple Expanation of How the NSA Program PRISM Works</a></h1>
     
   </header>
 
 
-
-
-
-<div class="entry-content"><h1>Cheat sheet for creating a new Rails app, adapted from the excellent <a href="http://guides.rubyonrails.org/getting_started.html">Rails Guides</a></h1>
-
-<p>Create a new project</p>
-
-<pre><code>$ rails new &lt;project name&gt;
-</code></pre>
-
-<p>Switch into the correct folder</p>
-
-<pre><code>$ cd &lt;project name&gt;
-</code></pre>
-
-<p>Get the database up</p>
-
-<pre><code>$ rake db:create
-</code></pre>
-
-<p>To start the rails server:</p>
-
-<pre><code>$ rails s
-</code></pre>
-
-<p>Create a controller</p>
-
-<pre><code>$ rails generate controller home index
-</code></pre>
-
-<p>If you&rsquo;re using Rails v3.2.13, remove the default home page</p>
-
-<pre><code>$ rm public/index.html
-</code></pre>
-
-<p>Open <code>config/routes.rb</code> and uncomment the root url route</p>
-
-<pre><code>root :to =&gt; "home#index"
-</code></pre>
-
-<p>Scaffold a resource</p>
-
-<pre><code>$ rails generate scaffold &lt;Model_Name&gt; column_name:data_type column_name:data_type 
-</code></pre>
-
-<p>Run another migration</p>
-
-<pre><code>$ rake db:migrate
-</code></pre>
-</div>
-
-
-  <footer>
+  
     <p class="meta">
       
-  
-
-<span class="byline author vcard">Posted by <span class="fn">chhhris lake</span></span>
-
-      
 
 
 
@@ -123,32 +69,50 @@
   
 
 
-<time datetime="2013-09-08T22:31:00-04:00" pubdate data-updated="true">Sep 8<span>th</span>, 2013</time>
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://chhhris.github.io/blog/2013/09/08/quickly-creating-a-new-rails-app/" data-via="chhhris" data-counturl="http://chhhris.github.io/blog/2013/09/08/quickly-creating-a-new-rails-app/" >Tweet</a>
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2013/09/01/variable-scope-in-ruby/" title="Previous Post: Variable Scope in Ruby">&laquo; Variable Scope in Ruby</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2013/09/09/instructions-for-implementing-friendly-id/" title="Next Post: Instructions for implementing Friendly ID">Instructions for implementing Friendly ID &raquo;</a>
+<time datetime="2013-06-11T08:44:00-04:00" pubdate data-updated="true">Jun 11<span>th</span>, 2013</time>
       
     </p>
-  </footer>
-</article>
+  
+  
 
+
+  <div class="entry-content"><h2>Or, how the author of the infamous top-secret PPT presentation has clearly never seen the inside of a SQL table.</h2>
+
+<p>When <a href="http://www.guardian.co.uk/world/2013/jun/07/prism-tech-giants-shock-nsa-data-mining">The Guardian</a> broke the story of the US Government&rsquo;s digital intelligence gathering operation (code named &ldquo;PRISM&rdquo;), the oft-quoted line from the Top Secret presentation an NSA analyst gave to his colleagues was that the NSA had &ldquo;direct access&rdquo; to the servers at Google, Microsoft, Facebook, Yahoo!, Apple, among others (with Dropbox &ldquo;coming soon&rdquo; and Twitter <a href="http://www.avc.com/a_vc/2013/06/feature-friday-standing-up-for-your-users.html">conspicuous by its absence</a>).</p>
+
+<p>The response from these tech companies was swift and <a href="http://www.guardian.co.uk/world/2013/jun/07/prism-tech-giants-shock-nsa-data-mining">unequivocal</a>. Turns out the NSA doesn&rsquo;t actually tap directly into the servers at these companies; instead, it has computers on-site to which NSA analysts post queries. The NSA computers then download the relevant data.</p>
+
+<p>The imprecision of the NSA&rsquo;s presentation is clearly, obviously due to the fact that the author has never performed a SQL JOIN on two tables in a database tables!</p>
+
+<p>In short, the way the PRISM works is the NSA collects as much data &ndash; every Google search, email, FB post and Verizon phone call &ndash; it can get its hands on. The NSA then cross-references this huge mountain of data with lists of known or suspected terrorists, persons of interest, et al. In other words, the NSA data analysts perform an <a href="http://www.codinghorror.com/blog/2007/10/a-visual-explanation-of-sql-joins.html">INNER JOIN</a> on the two tables!</p>
+
+<p>Here&rsquo;s a neat visualizing from <a href="http://blog.seldomatt.com/blog/2012/10/17/about-sql-joins-the-3-ring-binder-model/">Seldom Matt</a>:</p>
+
+<p><img src="http://25.media.tumblr.com/1702c57a6fd3a1048d1ab062d2cff590/tumblr_mo8cqssYw01qd3p27o1_500.png" alt="Image of &quot;binder method&quot; for visualizing and inner join" /></p>
 </div>
+  
+  
 
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
 <aside class="sidebar">
+  
+    <form action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:chhhris.github.io" />
+        <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      </fieldset>
+    </form>
+  
   
     <section>
   <h1>Recent Posts</h1>
@@ -180,7 +144,7 @@
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   
   <a href="https://github.com/chhhris">@chhhris</a> on GitHub
@@ -212,7 +176,6 @@
 
   
 </aside>
-
 
     </div>
   </div>

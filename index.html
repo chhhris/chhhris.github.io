@@ -9,7 +9,7 @@
   <meta name="author" content="chhhris lake">
 
   
-  <meta name="description" content="Cheat sheet for creating a new Rails app, adapted from the excellent Rails Guides Create a new project $ rails new &lt;project name&gt; Switch into &hellip;">
+  <meta name="description" content="Step-by-step instructions for implementing Friendly ID in a Rails app. You already know RESTful urls are n00b sauce, otherwise you wouldn&rsquo;t be &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -44,6 +44,119 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/09/instructions-for-implementing-friendly-id/">Instructions for Implementing Friendly ID</a></h1>
+    
+  </header>
+
+
+  
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-09T01:26:00-04:00" pubdate data-updated="true">Sep 9<span>th</span>, 2013</time>
+      
+    </p>
+  
+  
+
+
+  <div class="entry-content"><h1>Step-by-step instructions for implementing Friendly ID in a Rails app.</h1>
+
+<h2>You already know RESTful urls are n00b sauce, otherwise you wouldn&rsquo;t be here.</h2>
+
+<p>If you&rsquo;re not familiar, <a href="https://github.com/norman/friendly_id">Friendly ID</a> is a sweet gem that turns Rails standard RESTful urls (e.g. /users/1/) into more friendly and best practice string-based urls (e.g. /chris-lake)</p>
+
+<p>The following instructions were curated from Norman Clarke&rsquo;s Rails <a href="https://github.com/norman/friendly_id">QuickStart guide</a> and Ryan Bates&rsquo;s <a href="http://railscasts.com/episodes/314-pretty-urls-with-friendlyid">RailsCast</a>.</p>
+
+<p>Add FriendlyID to your Rails app&rsquo;s gemfile.</p>
+
+<pre><code>gem 'friendly_id', '5.0.0.beta4' #=&gt; Or whatever the current version is.
+</code></pre>
+
+<p>From terminal run bundle install, per usual:</p>
+
+<pre><code>$ bundle install
+</code></pre>
+
+<p>For all the models you want to add FriendlyId&rsquo;s, run the following migration.</p>
+
+<pre><code>$ rails g migration add_slug_to_[your model name here] slug:string
+</code></pre>
+
+<p>Ryan Bates says it’s a good idea to add an index for finding records, and at this point in my coding career, I&rsquo;m a follow Ryan Bates&rsquo;s advice. (Btw, that dude is the man. I hope he takes the time he needs to get his head straight.)</p>
+
+<p>In the migration file &ndash; let&rsquo;s use a User model by way of example &ndash; <code>/db/migrate/20120101000000_add_slug_to_user.rb</code>, add the index like so.</p>
+
+<pre><code>class AddSlugToUsers &lt; ActiveRecord::Migration 
+  def change
+    add_column :users, :slug, :string
+    add_index :users, :slug
+  end
+end
+</code></pre>
+
+<p>Please remember to run the migration.</p>
+
+<pre><code>$ rake db:migrate
+</code></pre>
+
+<p>To fill the slug in for existing records, we need to go into each record and save it.</p>
+
+<pre><code>$ rails c
+&gt; User.find_each(&amp;:save)
+</code></pre>
+
+<p>We&rsquo;ll want our slugs to update when records are changed in the db. At the same time it seems to be a good practice to still recognize older slugs and their legacy urls. We can do this by using FriendlyID’s <code>history</code> option in our model <code>/app/models/user.rb</code>.</p>
+
+<pre><code>class User &lt; ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history]
+end
+</code></pre>
+
+<p>This history needs to be stored somewhere so you&rsquo;ll also want to add a table to your database schema to store the slug records. FriendlyID provides a generator for this purpose:</p>
+
+<pre><code>$ rails generate friendly_id
+</code></pre>
+
+<p>And again.</p>
+
+<pre><code>$ rake db:migrate
+</code></pre>
+
+<p>Ryan Bates points out that, at this point, if our customer visits a legacy url, it will just work. Better would be to redirect them to the new url. We can do this by adjusting the show page on the controller &ndash; <code>/app/controllers/users_controller.rb</code></p>
+
+<p>Not sure if I&rsquo;ll even bother implementing this, but here&rsquo;s the syntax.</p>
+
+<pre><code>def show
+  @user = User.find(params[:id])
+  if request.path != user_path(@user)
+    redirect_to @user, status: :moved_permanently
+  end
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1205,58 +1318,9 @@ You probably read the deck, but if you didn&rsquo;t, here are a few takeaways fr
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/06/11/how-the-nsa-program-prism-works/">A Simple Expanation of How the NSA Program PRISM Works</a></h1>
-    
-  </header>
-
-
-  
-    <p class="meta">
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-11T08:44:00-04:00" pubdate data-updated="true">Jun 11<span>th</span>, 2013</time>
-      
-    </p>
-  
-  
-
-
-  <div class="entry-content"><h2>Or, how the author of the infamous top-secret PPT presentation has clearly never seen the inside of a SQL table.</h2>
-
-<p>When <a href="http://www.guardian.co.uk/world/2013/jun/07/prism-tech-giants-shock-nsa-data-mining">The Guardian</a> broke the story of the US Government&rsquo;s digital intelligence gathering operation (code named &ldquo;PRISM&rdquo;), the oft-quoted line from the Top Secret presentation an NSA analyst gave to his colleagues was that the NSA had &ldquo;direct access&rdquo; to the servers at Google, Microsoft, Facebook, Yahoo!, Apple, among others (with Dropbox &ldquo;coming soon&rdquo; and Twitter <a href="http://www.avc.com/a_vc/2013/06/feature-friday-standing-up-for-your-users.html">conspicuous by its absence</a>).</p>
-
-<p>The response from these tech companies was swift and <a href="http://www.guardian.co.uk/world/2013/jun/07/prism-tech-giants-shock-nsa-data-mining">unequivocal</a>. Turns out the NSA doesn&rsquo;t actually tap directly into the servers at these companies; instead, it has computers on-site to which NSA analysts post queries. The NSA computers then download the relevant data.</p>
-
-<p>The imprecision of the NSA&rsquo;s presentation is clearly, obviously due to the fact that the author has never performed a SQL JOIN on two tables in a database tables!</p>
-
-<p>In short, the way the PRISM works is the NSA collects as much data &ndash; every Google search, email, FB post and Verizon phone call &ndash; it can get its hands on. The NSA then cross-references this huge mountain of data with lists of known or suspected terrorists, persons of interest, et al. In other words, the NSA data analysts perform an <a href="http://www.codinghorror.com/blog/2007/10/a-visual-explanation-of-sql-joins.html">INNER JOIN</a> on the two tables!</p>
-
-<p>Here&rsquo;s a neat visualizing from <a href="http://blog.seldomatt.com/blog/2012/10/17/about-sql-joins-the-3-ring-binder-model/">Seldom Matt</a>:</p>
-
-<p><img src="http://25.media.tumblr.com/1702c57a6fd3a1048d1ab062d2cff590/tumblr_mo8cqssYw01qd3p27o1_500.png" alt="Image of &quot;binder method&quot; for visualizing and inner join" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -1277,6 +1341,10 @@ You probably read the deck, but if you didn&rsquo;t, here are a few takeaways fr
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/09/09/instructions-for-implementing-friendly-id/">Instructions for implementing Friendly ID</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/09/08/quickly-creating-a-new-rails-app/">Quickly creating a new Rails app</a>
       </li>
     
@@ -1290,10 +1358,6 @@ You probably read the deck, but if you didn&rsquo;t, here are a few takeaways fr
     
       <li class="post">
         <a href="/blog/2013/08/06/the-difference-between-procs/">The difference between procs, blocks and lambdas</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/15/open-source-how-to-git-started/">Open Source: How to Git Started</a>
       </li>
     
   </ul>

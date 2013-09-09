@@ -3,7 +3,7 @@
   <title><![CDATA[Super Computer.]]></title>
   <link href="http://chhhris.github.io/atom.xml" rel="self"/>
   <link href="http://chhhris.github.io/"/>
-  <updated>2013-09-08T22:40:37-04:00</updated>
+  <updated>2013-09-09T01:37:52-04:00</updated>
   <id>http://chhhris.github.io/</id>
   <author>
     <name><![CDATA[chhhris lake]]></name>
@@ -11,6 +11,89 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Instructions for implementing Friendly ID]]></title>
+    <link href="http://chhhris.github.io/blog/2013/09/09/instructions-for-implementing-friendly-id/"/>
+    <updated>2013-09-09T01:26:00-04:00</updated>
+    <id>http://chhhris.github.io/blog/2013/09/09/instructions-for-implementing-friendly-id</id>
+    <content type="html"><![CDATA[<h1>Step-by-step instructions for implementing Friendly ID in a Rails app.</h1>
+
+<h2>You already know RESTful urls are n00b sauce, otherwise you wouldn&rsquo;t be here.</h2>
+
+<p>If you&rsquo;re not familiar, <a href="https://github.com/norman/friendly_id">Friendly ID</a> is a sweet gem that turns Rails standard RESTful urls (e.g. /users/1/) into more friendly and best practice string-based urls (e.g. /chris-lake)</p>
+
+<p>The following instructions were curated from Norman Clarke&rsquo;s Rails <a href="https://github.com/norman/friendly_id">QuickStart guide</a> and Ryan Bates&rsquo;s <a href="http://railscasts.com/episodes/314-pretty-urls-with-friendlyid">RailsCast</a>.</p>
+
+<p>Add FriendlyID to your Rails app&rsquo;s gemfile.</p>
+
+<pre><code>gem 'friendly_id', '5.0.0.beta4' #=&gt; Or whatever the current version is.
+</code></pre>
+
+<p>From terminal run bundle install, per usual:</p>
+
+<pre><code>$ bundle install
+</code></pre>
+
+<p>For all the models you want to add FriendlyId&rsquo;s, run the following migration.</p>
+
+<pre><code>$ rails g migration add_slug_to_[your model name here] slug:string
+</code></pre>
+
+<p>Ryan Bates says it’s a good idea to add an index for finding records, and at this point in my coding career, I&rsquo;m a follow Ryan Bates&rsquo;s advice. (Btw, that dude is the man. I hope he takes the time he needs to get his head straight.)</p>
+
+<p>In the migration file &ndash; let&rsquo;s use a User model by way of example &ndash; <code>/db/migrate/20120101000000_add_slug_to_user.rb</code>, add the index like so.</p>
+
+<pre><code>class AddSlugToUsers &lt; ActiveRecord::Migration 
+  def change
+    add_column :users, :slug, :string
+    add_index :users, :slug
+  end
+end
+</code></pre>
+
+<p>Please remember to run the migration.</p>
+
+<pre><code>$ rake db:migrate
+</code></pre>
+
+<p>To fill the slug in for existing records, we need to go into each record and save it.</p>
+
+<pre><code>$ rails c
+&gt; User.find_each(&amp;:save)
+</code></pre>
+
+<p>We&rsquo;ll want our slugs to update when records are changed in the db. At the same time it seems to be a good practice to still recognize older slugs and their legacy urls. We can do this by using FriendlyID’s <code>history</code> option in our model <code>/app/models/user.rb</code>.</p>
+
+<pre><code>class User &lt; ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history]
+end
+</code></pre>
+
+<p>This history needs to be stored somewhere so you&rsquo;ll also want to add a table to your database schema to store the slug records. FriendlyID provides a generator for this purpose:</p>
+
+<pre><code>$ rails generate friendly_id
+</code></pre>
+
+<p>And again.</p>
+
+<pre><code>$ rake db:migrate
+</code></pre>
+
+<p>Ryan Bates points out that, at this point, if our customer visits a legacy url, it will just work. Better would be to redirect them to the new url. We can do this by adjusting the show page on the controller &ndash; <code>/app/controllers/users_controller.rb</code></p>
+
+<p>Not sure if I&rsquo;ll even bother implementing this, but here&rsquo;s the syntax.</p>
+
+<pre><code>def show
+  @user = User.find(params[:id])
+  if request.path != user_path(@user)
+    redirect_to @user, status: :moved_permanently
+  end
+end
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Quickly creating a new Rails app]]></title>
